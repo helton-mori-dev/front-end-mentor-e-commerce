@@ -1,6 +1,26 @@
 .header
-    display: flex
-.menu 
+    display: grid
+    grid-template-columns: 2fr 11fr 1fr 1fr 
+    padding: 2rem 0
+
+.header__menu 
     list-style: none
     display: flex
-    flex-direction: inline
+    justify-content: flex-start
+    margin-top: 4px
+    max-width: 50%
+
+.menu__item:not(:last-child)
+    margin-right: 2rem
+
+.menu__link
+    text-decoration: none
+    color: #999
+
+.header__cart
+    display: flex
+    justify-content: center
+    align-items: center
+
+.header__profile__img
+    max-width: 50px
