@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: 2fr 11fr 1fr 1fr;
   padding: 2rem 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2rem;
 }
 .header__menu {
   list-style: none;
@@ -17,11 +19,21 @@
   text-decoration: none;
   color: #999;
 }
-.header__cart {
+.header__cart,
+.header__profile {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header__profile__img {
   max-width: 50px;
+}
+.product-image {
+  display: none;
+  width: 100%;
+}
+.description {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
