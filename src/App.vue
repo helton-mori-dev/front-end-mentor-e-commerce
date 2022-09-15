@@ -2,24 +2,22 @@
   
   <div class="container">
     <MainHeader></MainHeader>
-    <ContentContainer></ContentContainer>    
-
-    <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      Coded by <a href="#">Your Name Here</a>.
-    </div>
+    <ContentContainer></ContentContainer>   
+    <MainFooter></MainFooter> 
   </div>
 </template>
 
 <script>
 import MainHeader from './components/MainHeader.vue';
 import ContentContainer from './components/ContentContainer.vue';
+import MainFooter from './components/MainFooter.vue'
 
 export default {
   name: 'App',
   components: {
     MainHeader,
-    ContentContainer
+    ContentContainer,
+    MainFooter
   }
 }
 </script>
