@@ -46,3 +46,16 @@
 
     }
 </script>
+
+<style scoped>
+.product-image {
+    display: none;
+    width: 100%;
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+</style>
