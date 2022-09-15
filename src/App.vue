@@ -2,47 +2,7 @@
   
   <div class="container">
     <MainHeader></MainHeader>
-
-    <section class="main container row">
-      <div class="col-6 gallery p-5">
-        <img style="display: block;" src="/images/image-product-1.jpg" alt="" class="product-image">
-        <img src="/images/image-product-2.jpg" alt="" class="product-image">
-        <img src="/images/image-product-3.jpg" alt="" class="product-image">
-        <img src="/images/image-product-4.jpg" alt="" class="product-image">
-
-      </div>
-      <div class="col-6 description px-5">
-
-        <h2 class="company-title">
-          Sneaker Company
-        </h2>
-        <h3 class="product-title">
-          Fall Limited Edition Sneakers
-        </h3>
-
-        <p class="product-description">
-        </p>
-        These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
-        they’ll withstand everything the weather can offer.
-
-        <p class="main-price">
-          $125.00
-        </p>
-        <p class="discount">
-          50%
-        </p>
-        <p class="old-price">
-          $250.00
-        </p>
-
-        <p class="amount">
-          0
-        </p>
-        <button class="add-to-cart">
-          Add to cart
-        </button>
-      </div>
-    </section>
+    <ContentContainer></ContentContainer>    
 
     <div class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
@@ -53,10 +13,13 @@
 
 <script>
 import MainHeader from './components/MainHeader.vue';
+import ContentContainer from './components/ContentContainer.vue';
+
 export default {
   name: 'App',
   components: {
-    MainHeader
+    MainHeader,
+    ContentContainer
   }
 }
 </script>
