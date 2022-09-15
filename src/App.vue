@@ -1,7 +1,5 @@
 <template>
   
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-
   <div class="container">
     <header class="header">
       <a href="/" class="header__logo"><img src="./assets/images/logo.svg" alt=""></a>
@@ -69,24 +67,18 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 
 .attribution {
