@@ -2,11 +2,9 @@
     <header class="header">
       <a href="/" class="header__logo"><img src="../assets/images/logo.svg" alt=""></a>
       <ul class="header__menu">
-        <li class="menu__item"><a href="#" class="menu__link">Collections</a></li>
-        <li class="menu__item"><a href="#" class="menu__link">Men</a></li>
-        <li class="menu__item"><a href="#" class="menu__link">Women</a></li>
-        <li class="menu__item"><a href="#" class="menu__link">About</a></li>
-        <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+        <li class="menu__item" v-for="link in links" :key="link.label">
+          <a href="#" class="menu__link">{{ link.label }}</a>
+        </li>
       </ul>
       <a href="" class="header__cart">
         <img src="../assets/images/icon-cart.svg" alt="">
@@ -19,7 +17,19 @@
 
 <script>
     export default {
-        name: 'MainHeader'
+        name: 'MainHeader',
+        data () {
+          return {
+            links: [
+              { label: 'Collections' },
+              { label: 'Men' },
+              { label: 'Women' },
+              { label: 'Women' },
+              { label: 'About' },
+              { label: 'Contact' }
+            ],            
+          }
+        }
     }
 </script>
 
