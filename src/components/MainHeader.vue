@@ -1,5 +1,20 @@
 <template>
     <header class="header">
+      
+      <div class="menu-button">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </div>
+
+      <div class="mobile-menu">
+        <ul class="mobile-header__menu">
+          <li class="mobile-menu__item" v-for="link in links" :key="link.label">
+            <a href="#" class="menu__link">{{ link.label }}</a>
+          </li>
+        </ul>
+      </div>
+
       <a href="/" class="header__logo"><img src="../assets/images/logo.svg" alt=""></a>
       <ul class="header__menu">
         <li class="menu__item" v-for="link in links" :key="link.label">
@@ -112,4 +127,15 @@
   box-shadow: 0 0 0 4px #f2812c;
 }
 
+.mobile-menu, .menu-button {
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .menu-button {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+  }
+}
 </style>
