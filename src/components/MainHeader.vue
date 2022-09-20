@@ -1,6 +1,7 @@
 <template>
     <header class="header">
       
+      <!-- <div class="mobile-container"></div> -->
       <div class="menu-button">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
@@ -53,7 +54,7 @@
 .header {
   display: grid;
   grid-template-columns: 2fr 11fr 1fr 1fr;
-  padding: 3rem 0 0;
+  margin: 3rem 0 0;
   border-bottom: 1px solid #ccc;
   margin-bottom: 2rem;
 }
@@ -132,10 +133,42 @@
 }
 
 @media screen and (max-width: 992px) {
+  .header {
+    grid-template-columns: 1fr 10fr 2fr 1fr;
+    position: relative;
+    border: none;
+  }
+
+  .header__menu {
+    display: none;
+  }
+
   .menu-button {
+    display: block;
+    float: left;
+    width: 22px;
+    padding-top: 6px;
+  }
+
+  .header__logo {
+    display: block;
+    float: left;
+    width: 100%;
+  }
+
+  .menu-line {
     position: absolute;
-    top: 8px;
-    left: 8px;
+    height: 4px;
+    width: 20px;
+    background-color:#999;
+  }
+
+  .menu-line:nth-child(2) {
+    top: 14px;
+  }
+
+  .menu-line:nth-child(3) {
+    top: 22px;
   }
 }
 </style>
