@@ -1,37 +1,40 @@
 <template>
     <header class="header">
-      <div 
-        class="back-menu-layer"
-        v-if="menuOpen"  
-        @click="toggleMenuMobile"
-      >
-      </div>
-      
+      <transition name="layer">
+        <div 
+          class="back-menu-layer"
+          v-if="menuOpen"  
+          @click="toggleMenuMobile"
+        >
+        </div>
+      </transition>
+        
       <div 
         class="menu-button"
         :class="{ closeButton: menuOpen }"
         @click="toggleMenuMobile"
       >
-
         <span class="menu-line"></span>
         <span class="menu-line"></span>
         <span class="menu-line"></span>
       </div>
 
-      <div 
+      <transition name="menu">
+        <div 
         class="mobile-menu" 
         v-if="menuOpen"
-      >
-        <ul class="mobile-header__menu">
-          <li 
+        >
+          <ul class="mobile-header__menu">
+            <li 
             class="mobile-menu__item" 
             v-for="link in links" 
             :key="link.label"
-          >
-            <a href="#" class="mobile-menu__link">{{ link.label }}</a>
-          </li>
-        </ul>
-      </div>
+            >
+              <a href="#" class="mobile-menu__link">{{ link.label }}</a>
+            </li>
+          </ul>
+        </div>
+      </transition>
 
       <a href="/" class="header__logo"><img src="../assets/images/logo.svg" alt=""></a>
       <ul class="header__menu">
@@ -251,5 +254,30 @@
     opacity: .6;
     background-color: #333;
   }
+  
+  .layer-enter-active {
+    transition: .3s all ease;
+  }
+
+  .layer-leave-active {
+    transition: .3s all ease;
+  }
+  
+  .layer-enter, .layer-leave-to {
+    opacity: 0;
+  }
+
+  .menu-enter-active {
+    transition: .3s all ease;
+  }
+  
+  .menu-leave-active {
+    transition: .3s all ease;
+  }
+
+  .menu-enter, .menu-leave-to {
+    left: -100%;
+  }
+
 }
 </style>
