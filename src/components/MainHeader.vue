@@ -1,5 +1,11 @@
 <template>
     <header class="header">
+      <div 
+        class="back-menu-layer"
+        v-if="menuOpen"  
+        @click="toggleMenuMobile"
+      >
+      </div>
       
       <div 
         class="menu-button"
@@ -47,7 +53,7 @@
         name: 'MainHeader',
         data () {
           return {
-            menuOpen: true,
+            menuOpen: false,
             links: [
               { label: 'Collections' },
               { label: 'Men' },
@@ -194,6 +200,12 @@
     top: 22px;
   }
 
+  .menu-button.closeButton {
+    position: fixed;
+    left: 5vw;
+    top: 4vw;
+  }
+
   .menu-button.closeButton .menu-line:nth-child(1){
     rotate: 45deg;
     top: 14px;
@@ -209,6 +221,8 @@
 
   .mobile-menu {
     position: fixed;
+    top: 0;
+    left: 0;
     background-color: #fff;
     z-index: 0;
   }
@@ -217,7 +231,7 @@
     list-style: none;
     width: 60vw;
     height: 100vh;
-    padding: 8vh 0 0 0;
+    padding: 8vh 0 0 5vw;
   }
 
   .mobile-menu__item {
@@ -229,6 +243,13 @@
     color: #333;
     text-decoration: none;
     font-weight: 700;
+  }
+
+  .back-menu-layer {
+    position: fixed;
+    inset: 0;
+    opacity: .6;
+    background-color: #333;
   }
 }
 </style>
