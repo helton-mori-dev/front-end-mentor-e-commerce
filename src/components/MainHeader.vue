@@ -1,13 +1,13 @@
 <template>
     <header class="header">
-      <transition name="layer">
+      <Transition name="layer">
         <div 
           class="back-menu-layer"
           v-if="menuOpen"  
           @click="toggleMenuMobile"
         >
         </div>
-      </transition>
+      </Transition>
         
       <div 
         class="menu-button"
@@ -19,7 +19,7 @@
         <span class="menu-line"></span>
       </div>
 
-      <transition name="menu">
+      <Transition name="menu">
         <div 
         class="mobile-menu" 
         v-if="menuOpen"
@@ -34,7 +34,7 @@
             </li>
           </ul>
         </div>
-      </transition>
+      </Transition>
 
       <a href="/" class="header__logo"><img src="../assets/images/logo.svg" alt=""></a>
       <ul class="header__menu">
@@ -255,27 +255,19 @@
     background-color: #333;
   }
   
-  .layer-enter-active {
-    transition: .3s all ease;
-  }
-
-  .layer-leave-active {
+  .layer-enter-active, .layer-leave-active {
     transition: .3s all ease;
   }
   
-  .layer-enter, .layer-leave-to {
+  .layer-enter-from, .layer-leave-to {
     opacity: 0;
   }
 
-  .menu-enter-active {
-    transition: .3s all ease;
-  }
-  
-  .menu-leave-active {
+  .menu-enter-active, .menu-leave-active  {
     transition: .3s all ease;
   }
 
-  .menu-enter, .menu-leave-to {
+  .menu-enter-from, .menu-leave-to {
     left: -100%;
   }
 
