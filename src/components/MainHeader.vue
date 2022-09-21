@@ -1,17 +1,28 @@
 <template>
     <header class="header">
       
-      <!-- <div class="mobile-container"></div> -->
-      <div class="menu-button">
+      <div 
+        class="menu-button"
+        :class="{ closeButton: menuOpen }"
+        @click="toggleMenuMobile"
+      >
+
         <span class="menu-line"></span>
         <span class="menu-line"></span>
         <span class="menu-line"></span>
       </div>
 
-      <div class="mobile-menu">
+      <div 
+        class="mobile-menu" 
+        v-if="menuOpen"
+      >
         <ul class="mobile-header__menu">
-          <li class="mobile-menu__item" v-for="link in links" :key="link.label">
-            <a href="#" class="menu__link">{{ link.label }}</a>
+          <li 
+            class="mobile-menu__item" 
+            v-for="link in links" 
+            :key="link.label"
+          >
+            <a href="#" class="mobile-menu__link">{{ link.label }}</a>
           </li>
         </ul>
       </div>
@@ -36,14 +47,19 @@
         name: 'MainHeader',
         data () {
           return {
+            menuOpen: true,
             links: [
               { label: 'Collections' },
               { label: 'Men' },
               { label: 'Women' },
-              { label: 'Women' },
               { label: 'About' },
               { label: 'Contact' }
             ],            
+          }
+        },
+        methods: {
+          toggleMenuMobile () {
+            this.menuOpen = !this.menuOpen
           }
         }
     }
@@ -128,13 +144,13 @@
   box-shadow: 0 0 0 4px #f2812c;
 }
 
-.mobile-menu, .menu-button {
+.menu-button {
   display: none;
 }
 
 @media screen and (max-width: 992px) {
   .header {
-    grid-template-columns: 1fr 10fr 2fr 1fr;
+    grid-template-columns: 10fr 2fr 1fr;
     position: relative;
     border: none;
   }
@@ -147,20 +163,27 @@
     display: block;
     float: left;
     width: 22px;
+    height: 25px;
     padding-top: 6px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
   }
 
   .header__logo {
     display: block;
     float: left;
     width: 100%;
+    margin-left: 36px;
   }
 
   .menu-line {
     position: absolute;
     height: 4px;
-    width: 20px;
+    width: 25px;
     background-color:#999;
+    transition: .3s all ease;
   }
 
   .menu-line:nth-child(2) {
@@ -169,6 +192,43 @@
 
   .menu-line:nth-child(3) {
     top: 22px;
+  }
+
+  .menu-button.closeButton .menu-line:nth-child(1){
+    rotate: 45deg;
+    top: 14px;
+  }
+
+  .menu-button.closeButton .menu-line:nth-child(2){
+    rotate: -45deg;
+  }
+
+  .menu-button.closeButton .menu-line:nth-child(3){
+    display: none;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    background-color: #fff;
+    z-index: 0;
+  }
+
+  .mobile-header__menu {
+    list-style: none;
+    width: 60vw;
+    height: 100vh;
+    padding: 8vh 0 0 0;
+  }
+
+  .mobile-menu__item {
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+  }
+  
+  .mobile-menu__link {
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
   }
 }
 </style>
