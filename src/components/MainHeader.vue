@@ -52,25 +52,27 @@
       >
         <img class="cart__img" src="../assets/images/icon-cart.svg" alt="">
       
-        <div 
-          class="cart__content"
-          v-if="cartOpen"
-        >
-          <h2 class="cart__title">Cart</h2>
-          <div class="cart__summary">
-            <div 
-              v-if="items > 0"
-              class="cart__items"
-            >
-            </div>
-            <h3
-              v-else
-              class="cart__message"
-            >
-              Your cart is empty.
-            </h3>
-          </div>          
-        </div>
+        <transition name="cart">
+          <div 
+            class="cart__content"
+            v-if="cartOpen"
+          >
+            <h2 class="cart__title">Cart</h2>
+            <div class="cart__summary">
+              <div 
+                v-if="items > 0"
+                class="cart__items"
+              >
+              </div>
+              <h3
+                v-else
+                class="cart__message"
+              >
+                Your cart is empty.
+              </h3>
+            </div>          
+          </div>
+        </transition>
       </div>
 
       <a href="" class="header__profile">
@@ -329,21 +331,30 @@
     background-color: #333;
   }
   
-  .layer-enter-active, .layer-leave-active {
-    transition: .3s all ease;
-  }
-  
-  .layer-enter-from, .layer-leave-to {
-    opacity: 0;
-  }
+}
+/* Transições */
 
-  .menu-enter-active, .menu-leave-active  {
-    transition: .3s all ease;
-  }
+.layer-enter-active, .layer-leave-active {
+  transition: .3s all ease;
+}
 
-  .menu-enter-from, .menu-leave-to {
-    left: -100%;
-  }
+.layer-enter-from, .layer-leave-to {
+  opacity: 0;
+}
 
+.menu-enter-active, .menu-leave-active  {
+  transition: .3s all ease;
+}
+
+.menu-enter-from, .menu-leave-to {
+  left: -100%;
+}
+
+.cart-enter-active, .cart-leave-active {
+  transition: .3s all ease;
+}
+
+.cart-enter-from, .cart-leave-to {
+  opacity: 0;
 }
 </style>
