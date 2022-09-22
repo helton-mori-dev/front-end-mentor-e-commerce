@@ -106,6 +106,11 @@
   color: #999;
   padding-bottom: 4rem;
   position: relative;
+  transition: 0.3s all ease;
+}
+
+.menu__link:hover {
+  color: #333;
 }
 
 .menu__link:after {
@@ -133,10 +138,11 @@
 .header__cart {
   padding-top: 5px;
   transition: 0.3s all ease;
+  opacity: .6;
 }
 
 .header__cart:hover {
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .header__profile {
@@ -203,12 +209,6 @@
     top: 22px;
   }
 
-  .menu-button.closeButton {
-    position: fixed;
-    left: 5vw;
-    top: 4vw;
-  }
-
   .menu-button.closeButton .menu-line:nth-child(1){
     rotate: 45deg;
     top: 14px;
@@ -234,7 +234,7 @@
     list-style: none;
     width: 60vw;
     height: 100vh;
-    padding: 8vh 0 0 5vw;
+    padding: 10vh 0 0 10vw;
   }
 
   .mobile-menu__item {
