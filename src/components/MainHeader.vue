@@ -36,15 +36,43 @@
         </div>
       </Transition>
 
-      <a href="/" class="header__logo"><img src="../assets/images/logo.svg" alt=""></a>
+      <a href="/" class="header__logo"><img src="../assets/images/logo.svg" alt="">
+      </a>
+
       <ul class="header__menu">
         <li class="menu__item" v-for="link in links" :key="link.label">
           <a href="#" class="menu__link">{{ link.label }}</a>
         </li>
       </ul>
-      <a href="" class="header__cart">
-        <img src="../assets/images/icon-cart.svg" alt="">
-      </a>
+
+      <div 
+        href="#" 
+        class="header__cart"
+        @click.stop.prevent="toggleCart"
+      >
+        <img class="cart__img" src="../assets/images/icon-cart.svg" alt="">
+      
+        <div 
+          class="cart__content"
+          v-if="cartOpen"
+        >
+          <h2 class="cart__title">Cart</h2>
+          <div class="cart__summary">
+            <div 
+              v-if="items > 0"
+              class="cart__items"
+            >
+            </div>
+            <h3
+              v-else
+              class="cart__message"
+            >
+              Your cart is empty.
+            </h3>
+          </div>          
+        </div>
+      </div>
+
       <a href="" class="header__profile">
         <img src="../assets/images/image-avatar.png" class="header__profile__img" alt="">
       </a>
@@ -56,7 +84,9 @@
         name: 'MainHeader',
         data () {
           return {
+            items: 0,
             menuOpen: false,
+            cartOpen: false,
             links: [
               { label: 'Collections' },
               { label: 'Men' },
@@ -69,6 +99,9 @@
         methods: {
           toggleMenuMobile () {
             this.menuOpen = !this.menuOpen
+          },
+          toggleCart () {
+            this.cartOpen = !this.cartOpen
           }
         }
     }
@@ -138,10 +171,15 @@
 .header__cart {
   padding-top: 5px;
   transition: 0.3s all ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.header__cart .cart__img {
   opacity: .6;
 }
 
-.header__cart:hover {
+.header__cart .cart__img:hover {
   opacity: 1;
 }
 
@@ -161,6 +199,42 @@
 
 .menu-button {
   display: none;
+}
+
+.cart__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50%;
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 40%);
+  opacity: 1;
+  background-color: #fff;
+}
+
+.cart__title {
+  font-weight: 700;
+  font-size: 22px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 32px 24px;
+}
+
+.cart__summary {
+  padding: 24px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+.cart__items {
+
+}
+
+.cart__message {
 }
 
 @media screen and (max-width: 992px) {
