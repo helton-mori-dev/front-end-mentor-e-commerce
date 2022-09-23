@@ -48,7 +48,7 @@
       <div 
         href="#" 
         class="header__cart"
-        @click.stop.prevent="toggleCart"
+        @click.stop="toggleCart"
       >
         <img class="cart__img" src="../assets/images/icon-cart.svg" alt="">
       
@@ -63,6 +63,16 @@
                 v-if="items > 0"
                 class="cart__items"
               >
+                <div class="product__wrap">
+                  <img class="product__thumb" src="../assets/images/image-product-1-thumbnail.jpg" alt="">
+                  <div class="product__info">                    
+                    <h2 class="product__name">Fall Limited Edition Sneakers</h2>
+                    <span class="single__price">$125.00 x 3 &nbsp;</span>             
+                    <span class="total__price">$375.00</span>
+                  </div>
+                  <img class="icon__delete" src="../assets/images/icon-delete.svg">
+                </div>
+                <button class="btn btn-primary button__checkout">Checkout</button>
               </div>
               <h3
                 v-else
@@ -86,9 +96,9 @@
         name: 'MainHeader',
         data () {
           return {
-            items: 0,
+            items: 10,
             menuOpen: false,
-            cartOpen: false,
+            cartOpen: true,
             links: [
               { label: 'Collections' },
               { label: 'Men' },
@@ -208,7 +218,7 @@
   top: 50%;
   left: 50%;
   translate: -50%;
-  width: 400px;
+  width: 420px;
   border-radius: 8px;
   box-shadow: 0 1px 10px rgb(0 0 0 / 40%);
   opacity: 1;
@@ -225,11 +235,56 @@
 
 .cart__summary {
   padding: 24px;
-  min-height: 300px;
+  min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #999;
+}
+
+.product__wrap {
+  display: grid;
+  grid-template-columns: 2fr 10fr 2fr;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+.product__thumb {
+  border-radius: 8px;
+  max-width: 70px;
+}
+
+.product__info {
+}
+
+.product__name {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.single__price {
+  font-size: 18px;
+}
+
+.total__price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
+
+.icon__delete {
+  display: table;
+  margin: auto;
+}
+
+.button__checkout {
+  background-color: #f2812c;
+  width: 100%;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 16px 0;
+  border: none;
 }
 
 .cart__items {
