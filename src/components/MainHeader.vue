@@ -36,7 +36,7 @@
         </div>
       </Transition>
 
-      <a href="/" class="header__logo"><img src="../assets/images/logo.svg" alt="">
+      <a href="/" class="header__logo"><img src="images/logo.svg" alt="">
       </a>
 
       <ul class="header__menu">
@@ -48,7 +48,7 @@
       <HeaderCart></HeaderCart>
 
       <a href="" class="header__profile">
-        <img src="../assets/images/image-avatar.png" class="header__profile__img" alt="">
+        <img src="images/image-avatar.png" class="header__profile__img" alt="">
       </a>
     </header>
 </template>

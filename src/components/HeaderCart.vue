@@ -4,7 +4,7 @@
         class="header__cart"
         @click.stop="toggleCart"
     >
-        <img class="cart__img" src="../assets/images/icon-cart.svg" alt="">
+        <img class="cart__img" src="images/icon-cart.svg" alt="">
         
         <transition name="cart">
             <div 
@@ -18,13 +18,13 @@
                 class="cart__items"
                 >
                 <div class="product__wrap">
-                    <img class="product__thumb" src="../assets/images/image-product-1-thumbnail.jpg" alt="">
+                    <img class="product__thumb" src="images/image-product-1-thumbnail.jpg" alt="">
                     <div class="product__info">                    
                     <h2 class="product__name">Fall Limited Edition Sneakers</h2>
                     <span class="single__price">$125.00 x 3 &nbsp;</span>             
                     <span class="total__price">$375.00</span>
                     </div>
-                    <img class="icon__delete" src="../assets/images/icon-delete.svg">
+                    <img class="icon__delete" src="images/icon-delete.svg">
                 </div>
                 <button class="btn btn-primary button__checkout">Checkout</button>
                 </div>

@@ -1,6 +1,6 @@
 <template>
   
-  <div class="container">
+  <div class="container g-0">
     <MainHeader></MainHeader>
     <ContentContainer></ContentContainer>   
     <MainFooter></MainFooter> 

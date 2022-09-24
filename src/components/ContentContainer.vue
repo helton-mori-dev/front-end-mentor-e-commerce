@@ -1,12 +1,21 @@
 <template>
-    <section class="main container row">
+    <section class="main container row g-0">
       <div class="col-6 gallery p-5">
-        <img style="display: block;" src="../assets/images/image-product-1.jpg" alt="" class="product-image">
-        <img src="../assets/images/image-product-2.jpg" alt="" class="product-image">
-        <img src="../assets/images/image-product-3.jpg" alt="" class="product-image">
-        <img src="../assets/images/image-product-4.jpg" alt="" class="product-image">
 
+        <div class="product__gallery"
+          v-for="slide of slides" :key="slide">
+          <div class="">
+            <img class="product__image" :src="slide.src" alt="">
+          </div>
+        </div>
+          
+        <div class="row thumbnails">
+          <div class="column thumb">
+            <img src="" alt="" class="img__thumb">
+          </div>
+        </div>
       </div>
+
       <div class="col-6 description px-5">
 
         <h2 class="company-title">
@@ -45,16 +54,22 @@
     export default {
       data () {
         return {
-          
+          slides: [
+            { src: 'images/image-product-1.jpg' },
+            { src: 'images/image-product-2.jpg' },
+            { src: 'images/image-product-3.jpg' },
+            { src: 'images/image-product-4.jpg' }
+          ]
         }
       }
     }
 </script>
 
 <style scoped>
-.product-image {
-    display: none;
+.product__image {
+    /* display: none; */
     width: 100%;
+    border-radius: 16px;
 }
 
 .description {
