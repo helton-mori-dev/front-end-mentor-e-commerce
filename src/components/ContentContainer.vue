@@ -3,15 +3,16 @@
       <div class="col-6 gallery p-5">
 
         <div class="product__gallery"
-          v-for="slide of slides" :key="slide">
+          v-for="slide in slides" :key="slide">
           <div class="">
             <img class="product__image" :src="slide.src" alt="">
           </div>
         </div>
           
-        <div class="row thumbnails">
+        <div class="row thumbnails"
+          v-for="thumb in thumbs" :key="thumb">
           <div class="column thumb">
-            <img src="" alt="" class="img__thumb">
+            <img class="img__thumb" :src="thumb.src" alt="">
           </div>
         </div>
       </div>
@@ -59,6 +60,12 @@
             { src: 'images/image-product-2.jpg' },
             { src: 'images/image-product-3.jpg' },
             { src: 'images/image-product-4.jpg' }
+          ],
+          thumbs: [
+            { src: 'images/image-product-1-thumbnail.jpg'},
+            { src: 'images/image-product-2-thumbnail.jpg'},
+            { src: 'images/image-product-3-thumbnail.jpg'},
+            { src: 'images/image-product-4-thumbnail.jpg'}
           ]
         }
       }
