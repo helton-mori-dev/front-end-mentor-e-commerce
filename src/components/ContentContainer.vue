@@ -12,7 +12,12 @@
         <div class="row thumbnails"
           v-for="thumb in thumbs" :key="thumb">
           <div class="column thumb">
-            <img class="img__thumb" :src="thumb.src" alt="">
+            <img 
+              class="img__thumb" 
+              :src="thumb.src" 
+              alt=""
+              @click="showImages(index)"
+            >
           </div>
         </div>
       </div>
@@ -68,20 +73,57 @@
             { src: 'images/image-product-4-thumbnail.jpg'}
           ]
         }
+      },
+      methods: {
+        showImages (n) {
+          let i
+          let imageIndex = 1
+          let images = document.querySelectorAll(".product__image")
+          let thumbs = document.querySelectorAll(".img__thumb")
+          if (n > images.length) {
+            imageIndex = 1
+          }
+          if (n < 1) {
+            imageIndex = images.length
+          }
+          for (i = 0; i < images.length; i++) {
+            images[i].style.display = "none"
+          }
+          for (i = 0; i < thumbs.length; i++) {
+            thumbs[i].className = thumbs[i].className.replace(" active", "")
+          }
+          images[imageIndex - 1].style.display = "block"
+          thumbs[imageIndex - 1].className += " active"
+          
+          console.log(n)
+          console.log(imageIndex - 1)
+          console.log(thumbs[imageIndex - 1])
+        }
+      },
+      mounted () {
+        this.showImages(0)
       }
     }
 </script>
 
 <style scoped>
 .product__image {
-    /* display: none; */
+    display: none;
     width: 100%;
     border-radius: 16px;
 }
+
+/* .product__image:first-child {
+    display: block;
+} */
 
 .description {
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+.active {
+  opacity: 1;
 }
 </style>
