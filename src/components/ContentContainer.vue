@@ -9,9 +9,9 @@
           </div>
         </div>
           
-        <div class="row thumbnails"
-          v-for="thumb in thumbs" :key="thumb">
-          <div class="column thumb">
+        <div class="thumbnails">          
+          <div class="thumb"
+            v-for="thumb in thumbs" :key="thumb">
             <img 
               class="img__thumb" 
               :src="thumb.src" 
@@ -95,9 +95,9 @@
           images[imageIndex - 1].style.display = "block"
           thumbs[imageIndex - 1].className += " active"
           
-          console.log(n)
-          console.log(imageIndex - 1)
-          console.log(thumbs[imageIndex - 1])
+          // console.log(n)
+          // console.log(imageIndex - 1)
+          // console.log(thumbs[imageIndex - 1])
         }
       },
       mounted () {
@@ -113,10 +113,6 @@
     border-radius: 16px;
 }
 
-/* .product__image:first-child {
-    display: block;
-} */
-
 .description {
     display: flex;
     justify-content: center;
@@ -125,5 +121,32 @@
 
 .active {
   opacity: 1;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.thumb {
+  width: 20%;
+  cursor: pointer;
+  transition: .3s all ease;
+}
+
+.thumb:hover {
+  opacity: .7;
+}
+
+.img__thumb {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.img__thumb.active {
+  border: 3px solid #f2812c;
+  opacity: .7;
 }
 </style>
