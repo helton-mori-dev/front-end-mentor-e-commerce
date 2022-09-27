@@ -11,7 +11,7 @@
           
         <div class="thumbnails">          
           <div class="thumb"
-            v-for="thumb in thumbs" :key="thumb">
+            v-for="(thumb, index) in thumbs" :key="thumb">
             <img 
               class="img__thumb" 
               :src="thumb.src" 
@@ -77,27 +77,18 @@
       methods: {
         showImages (n) {
           let i
-          let imageIndex = 1
+          let imageIndex = n
           let images = document.querySelectorAll(".product__image")
           let thumbs = document.querySelectorAll(".img__thumb")
-          if (n > images.length) {
-            imageIndex = 1
-          }
-          if (n < 1) {
-            imageIndex = images.length
-          }
+          
           for (i = 0; i < images.length; i++) {
             images[i].style.display = "none"
           }
           for (i = 0; i < thumbs.length; i++) {
             thumbs[i].className = thumbs[i].className.replace(" active", "")
           }
-          images[imageIndex - 1].style.display = "block"
-          thumbs[imageIndex - 1].className += " active"
-          
-          // console.log(n)
-          // console.log(imageIndex - 1)
-          // console.log(thumbs[imageIndex - 1])
+          images[imageIndex].style.display = "block"
+          thumbs[imageIndex].className += " active"
         }
       },
       mounted () {
