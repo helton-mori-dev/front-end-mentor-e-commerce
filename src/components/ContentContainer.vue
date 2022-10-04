@@ -30,10 +30,18 @@
         </p>
 
         <div class="qty-wrapper">
-          <p class="amount">
-            0
-          </p>
-          <button class="add-to-cart">
+          <div class="counter-wrapper">
+            <button class="counter-button decrease">
+              <img src="images/icon-minus.svg" alt="" class="minus">
+            </button>
+            <p class="amount">
+              0
+            </p>
+            <button class="counter-button increase">
+              <img src="images/icon-plus.svg" alt="" class="plus">
+            </button>
+          </div>
+          <button class="btn btn-dark add-to-cart">
             Add to cart
           </button>
         </div>
@@ -58,6 +66,7 @@
   .product-description {
     color: #666;
     font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
 
   .price-discount {
@@ -65,13 +74,13 @@
     justify-content: flex-start;
     line-height: 1;
   }
-
+  
   .main-price {
     font-weight: 700;
     font-size: 2rem;
     margin-right: 1rem;
   }
-
+  
   .discount {
     color: #f2812c;
     background-color: #ffeddc;
@@ -82,25 +91,53 @@
     font-size: 1.3rem;
     margin-top: 2px;
   }
-
+  
   .old-price {
     text-decoration: line-through;
     font-weight: 700;
     color: #ccc;
     font-size: 1.1rem;
     width: 100%;
+    margin-bottom: 2rem;
   }
 
   .qty-wrapper {
-
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    gap: 20px;
+  }
+  
+  .counter-wrapper {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 8px;
+    background-color: #f7f8fd;
   }
 
-  .amount {
+  .counter-button {
+    border: none;
+    background-color: transparent;
+  }
 
+  .counter-button:hover {
+    opacity: .6;
+  }
+  
+  .amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 1rem 0;
+    margin: 0;
   }
 
   .add-to-cart {
-
+    background-color: #f2812c;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
   }
 
 </style>
@@ -108,9 +145,9 @@
 <script>
   import ProductGallery from './ProductGallery.vue';
   export default {
-    data () {
+    // data () {
 
-    },
+    // },
     components: {
       ProductGallery
     },
