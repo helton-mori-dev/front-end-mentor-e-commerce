@@ -42,6 +42,7 @@
             </button>
           </div>
           <button class="btn btn-dark add-to-cart">
+            <img src="images/icon-cart.svg" alt="">
             Add to cart
           </button>
         </div>
@@ -50,6 +51,11 @@
 </template>
 
 <style scoped>
+  .add-to-cart img {
+    filter: invert(1);
+    mix-blend-mode: plus-lighter;
+    margin-right: .5rem;
+  }
   .company-title {
     color: #f2812c;
     text-transform: uppercase;
