@@ -2,44 +2,49 @@
     <div class="col-6 description p-5">
 
         <h2 class="company-title pt-5 pb-2">
-        Sneaker Company
+            {{ productName }}
         </h2>
         <h3 class="product-title pb-3">
-        Fall Limited Edition Sneakers
+            {{ productTitle }}
         </h3>
 
         <p class="product-description">
-            These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
-        they’ll withstand everything the weather can offer.
+            {{ productDescription }}
         </p>
 
         <div class="price-discount">
-        <p class="main-price">
-            $125.00
-        </p>
-        <p class="discount">
-            50%
-        </p>
+            <p class="main-price">
+                ${{ ((oldPrice*50)/100).toFixed(2) }}
+            </p>
+            <p class="discount">
+                {{ discount }}%
+            </p>
         </div>
 
         <p class="old-price">
-        $250.00
+            ${{ oldPrice }}
         </p>
 
         <div class="qty-wrapper">
             <div class="counter-wrapper">
-                <button class="counter-button decrease">
-                <img src="images/icon-minus.svg" alt="" class="minus">
+                <button 
+                    class="counter-button decrease"
+                    @click="amount--"
+                >
+                    <img src="images/icon-minus.svg" alt="Decrease" class="minus">
                 </button>
                 <p class="amount">
-                0
+                 {{ amount }}
                 </p>
-                <button class="counter-button increase">
-                <img src="images/icon-plus.svg" alt="" class="plus">
+                <button 
+                    class="counter-button increase"
+                    @click="amount++"
+                >
+                    <img src="images/icon-plus.svg" alt="Increase" class="plus">
                 </button>
             </div>
             <button class="btn btn-dark add-to-cart">
-                <img src="images/icon-cart.svg" alt="">
+                <img src="images/icon-cart.svg" alt="Add to cart">
                 Add to cart
             </button>
         </div>
@@ -48,7 +53,17 @@
 
 <script>
     export default {
-        
+        data () {
+            return {
+                productName: 'Sneaker Company',
+                productTitle: 'Fall Limited Edition Sneakers',
+                productDescription: `These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
+        they’ll withstand everything the weather can offer.`,
+                oldPrice: '250.00',
+                discount: 50,
+                amount: 1
+            }
+        }
     }
 </script>
 
