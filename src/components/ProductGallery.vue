@@ -1,22 +1,62 @@
 <template>
     <div class="col-6 gallery p-5">
         <div class="product__gallery"
-        v-for="slide in slides" :key="slide">
-        <div class="">
-            <img class="product__image" :src="slide.src" alt="">
-        </div>
+            v-for="slide in slides" 
+            :key="slide"
+        >
+            <div class="product__slider">
+                <img 
+                    class="product__image" 
+                    :src="slide.src" 
+                    alt=""
+                    @click="slideshow()"
+                >
+            </div>
         </div>
         
         <div class="thumbnails">          
-        <div class="thumb"
-            v-for="(thumb, index) in thumbs" :key="thumb">
-            <img 
-            class="img__thumb" 
-            :src="thumb.src" 
-            alt=""
-            @click="showImages(index)"
+            <div 
+                class="thumb"
+                v-for="(thumb, index) in thumbs" :key="thumb"
             >
+                <img 
+                    class="img__thumb" 
+                    :src="thumb.src" 
+                    alt=""
+                    @click="showImages(index)"
+                >
+            </div>
         </div>
+
+        <div 
+            class="slider-container"
+            v-if="showLightBox"
+        >
+            <div 
+                class="slider-lightbox"
+                v-for="slide in slides" 
+                :key="slide"
+            >
+                <div class="product__slider">
+                    <img 
+                        class="product__image" 
+                        :src="slide.src" 
+                    >
+                </div>
+            </div>
+            <div class="thumbnails">          
+                <div 
+                    class="thumb"
+                    v-for="(thumb, index) in thumbs" :key="thumb"
+                >
+                    <img 
+                        class="img__thumb" 
+                        :src="thumb.src" 
+                        alt=""
+                        @click="showImages(index)"
+                    >
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -25,6 +65,7 @@
     export default {
         data () {
             return {
+                showLightBox: false,
                 slides: [
                     { src: 'images/image-product-1.jpg' },
                     { src: 'images/image-product-2.jpg' },
@@ -54,6 +95,11 @@
             }
             images[imageIndex].style.display = "block"
             thumbs[imageIndex].className += " active"
+            },
+            slideshow () {
+                console.log('slide')
+                this.showLightBox = !this.showLightBox
+
             }
         },
         mounted () {
