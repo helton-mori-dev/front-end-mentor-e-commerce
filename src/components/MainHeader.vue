@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header class="header mx-3 mx-md-0">
       <Transition name="layer">
         <div 
           class="back-menu-layer"
@@ -170,7 +170,7 @@ export default {
   display: none;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 769px) {
   .header {
     grid-template-columns: 10fr 2fr 1fr;
     position: relative;

@@ -1,5 +1,5 @@
 <template>
-    <div class="col-6 gallery p-5">
+    <div class="col-sm-12 col-md-6 gallery p-sm-0 p-md-5">
         <div class="product__gallery"
             v-for="slide in slides" 
             :key="slide"
@@ -152,4 +152,11 @@
       border: 3px solid #f2812c;
       opacity: .6;
     }
-    </style>
+
+    .slider-container {
+        position: fixed;
+        inset: 0;
+        opacity: .6;
+        background-color: #333;
+    }
+</style>

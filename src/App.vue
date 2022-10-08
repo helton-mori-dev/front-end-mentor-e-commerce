@@ -38,4 +38,10 @@ export default {
   color: hsl(228, 45%, 44%);
 }
 
+@media (max-width: 769px) {
+  .attribution {
+    margin-top: 2rem;
+  }
+}
+
 </style>

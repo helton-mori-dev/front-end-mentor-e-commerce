@@ -1,5 +1,5 @@
 <template>
-    <div class="col-6 description p-5">
+    <div class="col-sm-12 col-md-6 description p-sm-0 p-md-5">
 
         <h2 class="company-title pt-5 pb-2">
             {{ productName }}
@@ -12,21 +12,23 @@
             {{ productDescription }}
         </p>
 
-        <div class="price-discount">
+        <div class="mobile-price-container">
+          <div class="price-discount">
             <p class="main-price">
-                ${{ ((oldPrice*50)/100).toFixed(2) }}
+              ${{ ((oldPrice*50)/100).toFixed(2) }}
             </p>
             <p class="discount">
-                {{ discount }}%
+              {{ discount }}%
             </p>
+          </div>
+          
+          <p class="old-price">
+            ${{ oldPrice }}
+          </p>
         </div>
 
-        <p class="old-price">
-            ${{ oldPrice }}
-        </p>
-
-        <div class="qty-wrapper">
-            <div class="counter-wrapper">
+        <div class="qty-wrapper row">
+            <div class="counter-wrapper col-sm-12">
                 <button 
                     class="counter-button decrease"
                     @click="amount--"
@@ -43,7 +45,7 @@
                     <img src="images/icon-plus.svg" alt="Increase" class="plus">
                 </button>
             </div>
-            <button class="btn btn-dark add-to-cart">
+            <button class="btn btn-dark add-to-cart col-sm-12">
                 <img src="images/icon-cart.svg" alt="Add to cart">
                 Add to cart
             </button>
@@ -161,6 +163,28 @@
       border-radius: 12px;
       font-size: 1.3rem;
       letter-spacing: 2px;
+    }
+
+    @media (max-width: 769px) {
+      .mobile-price-container {
+        display: flex;
+      }
+
+      .qty-wrapper {
+        display: flex;
+      }
+
+      .counter-wrapper {
+        justify-content: space-between;
+      }
+
+      .add-to-cart {
+        padding: 1rem 0;
+      }
+
+      .old-price {
+        text-align: right;
+      }
     }
   
   </style>
