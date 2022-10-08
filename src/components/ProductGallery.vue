@@ -6,7 +6,7 @@
         >
             <div class="product__slider">
                 <img 
-                    class="product__image" 
+                    class="product__image img-fluid" 
                     :src="slide.src" 
                     alt=""
                     @click="slideshow()"
@@ -14,7 +14,7 @@
             </div>
         </div>
         
-        <div class="thumbnails">          
+        <div class="thumbnails d-md-flex d-none">          
             <div 
                 class="thumb"
                 v-for="(thumb, index) in thumbs" :key="thumb"
@@ -110,6 +110,7 @@
 
 
 <style scoped>
+
     .product__image {
         display: none;
         width: 100%;
@@ -158,5 +159,11 @@
         inset: 0;
         opacity: .6;
         background-color: #333;
+    }
+
+    @media (max-width: 576px) {
+        .product__image {
+            border-radius: 0;
+        }
     }
 </style>

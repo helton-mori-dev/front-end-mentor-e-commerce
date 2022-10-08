@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-12 col-md-6 description p-sm-0 p-md-5">
+    <div class="col-sm-12 col-md-6 description py-sm-0 p-md-5 px-4">
 
         <h2 class="company-title pt-5 pb-2">
             {{ productName }}
@@ -135,7 +135,7 @@
     .counter-wrapper {
       display: flex;
       justify-content: space-around;
-      border-radius: 8px;
+      border-radius: 12px;
       background-color: #f7f8fd;
     }
   
@@ -172,14 +172,17 @@
 
       .qty-wrapper {
         display: flex;
+        width: 100%;
+        margin: 0;
       }
 
       .counter-wrapper {
         justify-content: space-between;
+        padding: .5rem 2rem;
       }
 
       .add-to-cart {
-        padding: 1rem 0;
+        padding: 1.8rem 0;
       }
 
       .old-price {

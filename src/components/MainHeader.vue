@@ -175,6 +175,7 @@ export default {
     grid-template-columns: 10fr 2fr 1fr;
     position: relative;
     border: none;
+    margin: 2rem 0 1.5rem;
   }
 
   .header__menu {

@@ -145,4 +145,13 @@
 .cart-enter-from, .cart-leave-to {
   opacity: 0;
 }
+
+@media (max-width: 769px) {
+  .cart__content {
+    position: fixed;
+    top: 100px;
+
+  }
+
+}
 </style>
