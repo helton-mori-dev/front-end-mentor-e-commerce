@@ -23,10 +23,12 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700');
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 .attribution {
