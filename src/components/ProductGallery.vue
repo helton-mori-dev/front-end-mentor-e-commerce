@@ -28,36 +28,50 @@
             </div>
         </div>
 
-        <div 
-            class="slider-container"
-            v-if="showLightBox"
-        >
+        <Transition name="layer">
             <div 
-                class="slider-lightbox"
-                v-for="slide in slides" 
-                :key="slide"
+                class="slider__container row"
+                v-if="showLightBox"
+                @click.stop="slideshow()"
             >
-                <div class="product__slider">
-                    <img 
-                        class="product__image" 
-                        :src="slide.src" 
-                    >
-                </div>
-            </div>
-            <div class="thumbnails">          
                 <div 
-                    class="thumb"
-                    v-for="(thumb, index) in thumbs" :key="thumb"
+                    class="slider__lightbox col-4 mx-auto"
+                    v-for="slide in slides" 
+                    :key="slide"
                 >
-                    <img 
-                        class="img__thumb" 
-                        :src="thumb.src" 
-                        alt=""
-                        @click="showImages(index)"
+                    <div 
+                        class="slider__close"
+                        @click.stop="slideHide()"
                     >
+                        <img src="images/icon-close.svg" alt="" class="close__icon">
+                    </div>
+                    <div class="product__slider">
+                        <img 
+                            class="product__image__lightbox img-fluid" 
+                            :src="slide.src" 
+                        >
+                    </div>
+                    <div class="thumbnails col-10 mx-auto">          
+                    <div 
+                        class="thumb product__slider"
+                        v-for="(thumb, index) in thumbs" :key="thumb"
+                    >
+                        <img 
+                            class="img__thumb" 
+                            :src="thumb.src" 
+                            alt=""
+                            @click="showImages(index)"
+                        >
+                    </div>
                 </div>
+                </div>
+
+                <div 
+                    class="back-menu-layer"
+                    v-if="showLightBox"
+                ></div>
             </div>
-        </div>
+        </Transition>
     </div>
 </template>
 
@@ -98,9 +112,12 @@
             },
             slideshow () {
                 console.log('slide')
-                this.showLightBox = !this.showLightBox
-
+                this.showLightBox = true
+            },
+            slideHide () {
+                this.showLightBox = false
             }
+
         },
         mounted () {
             this.showImages(0)
@@ -154,11 +171,40 @@
       opacity: .6;
     }
 
-    .slider-container {
+    .slider__container {
+        position: fixed;
+        inset: 0;
+        z-index: 4;
+    }
+
+    .slider__lightbox {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        translate: -50%;
+        z-index: 4;
+    }
+
+    .slider__close {
+        position: absolute;
+        right: 0;
+        top: -30px;
+        cursor: pointer;
+    }
+    .back-menu-layer {
         position: fixed;
         inset: 0;
         opacity: .6;
         background-color: #333;
+        z-index: 3;
+    }
+
+    .layer-enter-active, .layer-leave-active {
+        transition: .3s all ease;
+    }
+
+    .layer-enter-from, .layer-leave-to {
+        opacity: 0;
     }
 
     @media (max-width: 576px) {
