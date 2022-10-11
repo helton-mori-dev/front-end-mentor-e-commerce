@@ -35,7 +35,7 @@
                 @click.stop="slideshow()"
             >
                 <div 
-                    class="slider__lightbox col-4 mx-auto"
+                    class="slider__lightbox col-5 mx-auto"
                     v-for="slide in slides" 
                     :key="slide"
                 >
@@ -43,7 +43,7 @@
                         class="slider__close"
                         @click.stop="slideHide()"
                     >
-                        <img src="images/icon-close.svg" alt="" class="close__icon">
+                        <img src="images/icon-close.svg" alt="" class="close__icon" height="30">
                     </div>
                     <div class="product__slider">
                         <img 
@@ -111,7 +111,6 @@
             thumbs[imageIndex].className += " active"
             },
             slideshow () {
-                console.log('slide')
                 this.showLightBox = true
             },
             slideHide () {
@@ -179,17 +178,25 @@
 
     .slider__lightbox {
         position: absolute;
-        top: 25%;
+        top: 50%;
         left: 50%;
-        translate: -50%;
+        translate: -50% -50%;
         z-index: 4;
     }
 
     .slider__close {
         position: absolute;
-        right: 0;
-        top: -30px;
+        right: 10px;
+        top: -50px;
         cursor: pointer;
+    }
+    
+    .close__icon {
+        transition: .3s all ease;        
+    }
+
+    .slider__close:hover .close__icon{
+        filter: brightness(200%);
     }
     .back-menu-layer {
         position: fixed;
@@ -197,6 +204,10 @@
         opacity: .6;
         background-color: #333;
         z-index: 3;
+    }
+
+    .product__image__lightbox {
+        border-radius: 12px;
     }
 
     .layer-enter-active, .layer-leave-active {
