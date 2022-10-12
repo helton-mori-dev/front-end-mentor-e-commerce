@@ -35,7 +35,7 @@
                 @click.stop="slideshow()"
             >
                 <div 
-                    class="slider__lightbox col-5 mx-auto"
+                    class="slider__lightbox col-sm-6 col-md-4 mx-auto"
                     v-for="slide in slides" 
                     :key="slide"
                 >
@@ -57,10 +57,10 @@
                         v-for="(thumb, index) in thumbs" :key="thumb"
                     >
                         <img 
-                            class="img__thumb" 
+                            class="img__thumb__lightbox" 
                             :src="thumb.src" 
                             alt=""
-                            @click="showImages(index)"
+                            @click="showImagesLightBox(index)"
                         >
                     </div>
                 </div>
@@ -115,6 +115,21 @@
             },
             slideHide () {
                 this.showLightBox = false
+            },
+            showImagesLightBox (n) {
+                let i
+                let imageIndex = n
+                let images = document.querySelectorAll(".product__image__lightbox")
+                let thumbs = document.querySelectorAll(".img__thumb__lightbox")
+                
+                for (i = 0; i < images.length; i++) {
+                    images[i].style.display = "none"
+                }
+                for (i = 0; i < thumbs.length; i++) {
+                    thumbs[i].className = thumbs[i].className.replace(" active", "")
+                }
+                images[imageIndex].style.display = "block"
+                thumbs[imageIndex].className += " active"
             }
 
         },
@@ -160,12 +175,12 @@
       opacity: .7;
     }
     
-    .img__thumb {
+    .img__thumb, .img__thumb__lightbox {
       width: 100%;
       border-radius: 8px;
     }
     
-    .img__thumb.active {
+    .img__thumb.active, .img__thumb__lightbox.active {
       border: 3px solid #f2812c;
       opacity: .6;
     }
@@ -182,6 +197,7 @@
         left: 50%;
         translate: -50% -50%;
         z-index: 4;
+        max-width: 100%;
     }
 
     .slider__close {
