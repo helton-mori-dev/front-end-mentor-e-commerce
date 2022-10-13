@@ -35,23 +35,24 @@
                 @click.stop="slideshow()"
             >
                 <div 
-                    class="slider__lightbox col-sm-6 col-md-4 mx-auto"
+                    class="slider__close"
+                    @click.stop="slideHide()"
+                >
+                    <img src="images/icon-close.svg" alt="" class="close__icon" height="30">
+                </div>            
+                <div 
+                    class="slider__lightbox col-8 col-md-6"
                     v-for="slide in slides" 
                     :key="slide"
                 >
-                    <div 
-                        class="slider__close"
-                        @click.stop="slideHide()"
-                    >
-                        <img src="images/icon-close.svg" alt="" class="close__icon" height="30">
-                    </div>
                     <div class="product__slider">
                         <img 
                             class="product__image__lightbox img-fluid" 
                             :src="slide.src" 
                         >
                     </div>
-                    <div class="thumbnails col-10 mx-auto">          
+                </div>
+                <div class="thumbnails thumbnails__lightbox col-6">          
                     <div 
                         class="thumb product__slider"
                         v-for="(thumb, index) in thumbs" :key="thumb"
@@ -63,7 +64,6 @@
                             @click="showImagesLightBox(index)"
                         >
                     </div>
-                </div>
                 </div>
 
                 <div 
@@ -128,7 +128,7 @@
                 for (i = 0; i < thumbs.length; i++) {
                     thumbs[i].className = thumbs[i].className.replace(" active", "")
                 }
-                images[imageIndex].style.display = "block"
+                images[imageIndex].style.display = "flex"
                 thumbs[imageIndex].className += " active"
             }
 
@@ -164,6 +164,14 @@
       justify-content: space-between;
       margin-top: 32px;
     }
+
+    .thumbnails__lightbox {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        translate: -50%;
+        z-index: 5;
+    }
     
     .thumb {
       width: 20%;
@@ -192,10 +200,10 @@
     }
 
     .slider__lightbox {
-        position: absolute;
+        /* position: absolute;
         top: 50%;
         left: 50%;
-        translate: -50% -50%;
+        translate: -50% -50%; */
         z-index: 4;
         max-width: 100%;
     }
@@ -223,6 +231,7 @@
     }
 
     .product__image__lightbox {
+        display: none;
         border-radius: 12px;
     }
 
