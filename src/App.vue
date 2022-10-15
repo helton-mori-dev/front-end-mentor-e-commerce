@@ -23,6 +23,10 @@ export default {
 </script>
 
 <style>
+:root {
+  --orange: #f2812c;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700');
 
 #app {

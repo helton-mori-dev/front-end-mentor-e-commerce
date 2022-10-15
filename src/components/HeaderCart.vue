@@ -122,7 +122,7 @@
 }
 
 .button__checkout {
-  background-color: #f2812c;
+  background-color: var(--orange);
   width: 100%;
   color: #fff;
   font-weight: 600;

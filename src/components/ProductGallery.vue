@@ -209,12 +209,12 @@
     }
     
     .img__thumb.active {
-        box-shadow:  0 0 0 3px #f2812c;
+        box-shadow:  0 0 0 3px var(--orange);
         opacity: .6;
     }
 
     .img__thumb__lightbox.active {
-      box-shadow:  0 0 0 3px #f2812c;
+      box-shadow:  0 0 0 3px var(--orange);
     }
 
     .slider__container {

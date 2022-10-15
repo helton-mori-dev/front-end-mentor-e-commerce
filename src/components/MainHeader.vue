@@ -135,7 +135,7 @@ export default {
   left: 0;
   height: 4px;
   width: 100%;
-  background-color: #f2812c;
+  background-color: var(--orange);
 }
 
 .header__cart,
@@ -163,7 +163,7 @@ export default {
 }
 
 .header__profile__img:hover {
-  box-shadow: 0 0 0 4px #f2812c;
+  box-shadow: 0 0 0 4px var(--orange);
 }
 
 .menu-button {

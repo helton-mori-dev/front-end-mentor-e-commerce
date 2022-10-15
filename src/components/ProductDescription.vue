@@ -76,7 +76,7 @@
       margin-right: .5rem;
     }
     .company-title {
-      color: #f2812c;
+      color: var(--orange);
       text-transform: uppercase;
       font-size: 1.2rem;
       font-weight: 600;
@@ -107,7 +107,7 @@
     }
     
     .discount {
-      color: #f2812c;
+      color: var(--orange);
       background-color: #ffeddc;
       line-height: 1rem;
       border-radius: 10px;
@@ -156,7 +156,7 @@
     }
   
     .add-to-cart {
-      background-color: #f2812c;
+      background-color: var(--orange);
       color: #fff;
       font-weight: 700;
       border: none;
