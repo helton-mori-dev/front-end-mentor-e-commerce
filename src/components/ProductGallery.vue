@@ -34,35 +34,40 @@
                 v-if="showLightBox"
                 @click.stop="slideshow()"
             >
-                <img 
-                    @click.stop="slideHide()"
-                    src="images/icon-close.svg" 
-                    alt="" 
-                    class="slider__close" 
-                    height="30"
-                >        
-                <div 
-                    class="slider__lightbox col-sm-8 col-md-6"
-                    v-for="slide in slides" 
-                    :key="slide"
-                >
-                    <div class="product__slider">
-                        <img 
-                            class="product__image__lightbox img-fluid" 
-                            :src="slide.src" 
-                        >
-                    </div>
-                </div>
-                <div class="thumbnails thumbnails__lightbox col-6">          
+                <div class="slider__lightbox__container mx-auto">
+                    <img 
+                        @click.stop="slideHide()"
+                        src="images/icon-close.svg" 
+                        alt="" 
+                        class="slider__close" 
+                        height="30"
+                    >  
                     <div 
-                        v-for="(thumb, index) in thumbs" :key="thumb"
+                        class="slider__lightbox mx-auto"
+                        v-for="slide in slides" 
+                        :key="slide"
                     >
-                        <img 
-                            class="img__thumb__lightbox" 
-                            :src="thumb.src" 
-                            alt=""
-                            @click="showImagesLightBox(index)"
+        
+                        <div class="product__slider">
+                            <img 
+                                class="product__image__lightbox img-fluid" 
+                                :src="slide.src" 
+                            >
+                        </div>
+                    </div>
+                    <div class="thumbnails thumbnails__lightbox mx-auto">          
+                        <div 
+                            v-for="(thumb, index) in thumbs" 
+                            :key="thumb"
+                            class="thumb__lightbox"
                         >
+                            <img 
+                                class="img__thumb__lightbox" 
+                                :src="thumb.src" 
+                                alt=""
+                                @click.stop="showImagesLightBox(index)"
+                            >
+                        </div>
                     </div>
                 </div>
 
@@ -128,7 +133,7 @@
                 for (i = 0; i < thumbs.length; i++) {
                     thumbs[i].className = thumbs[i].className.replace(" active", "")
                 }
-                images[imageIndex].style.display = "flex"
+                images[imageIndex].style.display = "block"
                 thumbs[imageIndex].className += " active"
             }
 
@@ -166,11 +171,12 @@
     }
 
     .thumbnails__lightbox {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        translate: -50%;
         z-index: 5;
+        width: 80%;
+    }
+
+    .thumb__lightbox {
+        padding: 0 10px;
     }
     
     .thumb {
@@ -187,6 +193,10 @@
       width: 100%;
       border-radius: 8px;
     }
+
+    .slider__lightbox:nth-child(2) .product__slider img {
+        display: block;
+    }
     
     .img__thumb.active {
       border: 3px solid #f2812c;
@@ -194,7 +204,7 @@
     }
 
     .img__thumb__lightbox.active {
-      border: 3px solid #f2812c;
+      box-shadow:  0 0 0 3px #f2812c;
     }
 
     .slider__container {
@@ -203,11 +213,15 @@
         z-index: 4;
     }
 
+    .slider__lightbox__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        max-width: 530px;
+        padding-top: 100px;
+    }
+
     .slider__lightbox {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        translate: -50% -50%;
         z-index: 4;
         max-width: 100%;
     }
