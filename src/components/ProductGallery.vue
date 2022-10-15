@@ -30,18 +30,19 @@
 
         <Transition name="layer">
             <div 
-                class="slider__container row"
+                class="slider__container"
                 v-if="showLightBox"
                 @click.stop="slideshow()"
             >
-                <div 
-                    class="slider__close"
+                <img 
                     @click.stop="slideHide()"
-                >
-                    <img src="images/icon-close.svg" alt="" class="close__icon" height="30">
-                </div>            
+                    src="images/icon-close.svg" 
+                    alt="" 
+                    class="slider__close" 
+                    height="30"
+                >        
                 <div 
-                    class="slider__lightbox col-8 col-md-6"
+                    class="slider__lightbox col-sm-8 col-md-6"
                     v-for="slide in slides" 
                     :key="slide"
                 >
@@ -54,7 +55,6 @@
                 </div>
                 <div class="thumbnails thumbnails__lightbox col-6">          
                     <div 
-                        class="thumb product__slider"
                         v-for="(thumb, index) in thumbs" :key="thumb"
                     >
                         <img 
@@ -188,9 +188,13 @@
       border-radius: 8px;
     }
     
-    .img__thumb.active, .img__thumb__lightbox.active {
+    .img__thumb.active {
       border: 3px solid #f2812c;
       opacity: .6;
+    }
+
+    .img__thumb__lightbox.active {
+      border: 3px solid #f2812c;
     }
 
     .slider__container {
@@ -200,19 +204,20 @@
     }
 
     .slider__lightbox {
-        /* position: absolute;
+        position: absolute;
         top: 50%;
         left: 50%;
-        translate: -50% -50%; */
+        translate: -50% -50%;
         z-index: 4;
         max-width: 100%;
     }
 
     .slider__close {
         position: absolute;
-        right: 10px;
-        top: -50px;
+        right: 0;
+        top: 50px;
         cursor: pointer;
+        z-index: 5;
     }
     
     .close__icon {
