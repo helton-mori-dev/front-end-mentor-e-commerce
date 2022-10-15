@@ -30,7 +30,7 @@
 
         <Transition name="layer">
             <div 
-                class="slider__container"
+                class="slider__container d-none d-sm-block"
                 v-if="showLightBox"
                 @click.stop="slideshow()"
             >
@@ -152,6 +152,10 @@
         width: 100%;
         border-radius: 16px;
     }
+
+    .product__gallery {
+        cursor: pointer;
+    }
     
     .description {
         display: flex;
@@ -192,6 +196,12 @@
     .img__thumb, .img__thumb__lightbox {
       width: 100%;
       border-radius: 8px;
+      transition: .3s all ease;
+    }
+
+    .img__thumb__lightbox:hover {
+        opacity: .7;
+        transition: .3s all ease;
     }
 
     .slider__lightbox:nth-child(2) .product__slider img {
@@ -199,8 +209,8 @@
     }
     
     .img__thumb.active {
-      border: 3px solid #f2812c;
-      opacity: .6;
+        box-shadow:  0 0 0 3px #f2812c;
+        opacity: .6;
     }
 
     .img__thumb__lightbox.active {
@@ -232,13 +242,10 @@
         top: 50px;
         cursor: pointer;
         z-index: 5;
-    }
-    
-    .close__icon {
         transition: .3s all ease;        
     }
-
-    .slider__close:hover .close__icon{
+    
+    .slider__close:hover {
         filter: brightness(200%);
     }
     .back-menu-layer {
