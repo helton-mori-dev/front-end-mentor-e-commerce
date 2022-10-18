@@ -2,21 +2,21 @@
     <div 
         href="#" 
         class="header__cart"
-        @click.stop="toggleCart"
+        @click.stop="openCart"
     >
         <img class="cart__img" src="images/icon-cart.svg" alt="">
         
         <transition name="cart">
-            <div 
+          <div 
             class="cart__content"
             v-if="cartOpen"
-            >
+          >
             <h2 class="cart__title">Cart</h2>
             <div class="cart__summary">
-                <div 
+              <div 
                 v-if="items > 0"
                 class="cart__items"
-                >
+              >
                 <div class="product__wrap">
                     <img class="product__thumb" src="images/image-product-1-thumbnail.jpg" alt="">
                     <div class="product__info">                    
@@ -38,6 +38,12 @@
             </div>
         </transition>
     </div>
+    <div 
+      class="back-cart-layer"
+      v-if="cartOpen"  
+      @click="closeCart"
+    >
+    </div>
 </template>
 
 <script>
@@ -50,26 +56,32 @@
       }
     },
     methods: {
-      toggleCart () {
-        this.cartOpen = !this.cartOpen
+      openCart () {
+        this.cartOpen = true
+      },
+      closeCart () {
+        this.cartOpen = false
       }
     }
 }
 </script>
 
 <style>
+.header {
+  position: relative;
+}
 
 .cart__content {
   position: absolute;
   top: 50%;
-  left: 50%;
-  translate: -50%;
+  right: 0;
   width: 420px;
   border-radius: 8px;
   box-shadow: 0 1px 10px rgb(0 0 0 / 40%);
   opacity: 1;
   background-color: #fff;
   cursor: default;
+  z-index: 6;
 }
 
 .cart__title {
@@ -133,11 +145,18 @@
 
 .header__cart .cart__img {
   opacity: .6;
+  cursor: pointer;
 }
 
 .header__cart .cart__img:hover {
   opacity: 1;
 }
+
+.back-cart-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+  }
 
 .cart-enter-active, .cart-leave-active {
   transition: .3s all ease;
@@ -151,7 +170,9 @@
   .cart__content {
     position: fixed;
     top: 100px;
-
+    left: 50%;
+    translate: -50%;
+    width: 90%;
   }
 
 }
