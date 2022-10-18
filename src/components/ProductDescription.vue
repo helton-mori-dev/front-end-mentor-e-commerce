@@ -31,7 +31,7 @@
             <div class="counter-wrapper col-sm-12">
                 <button 
                     class="counter-button decrease"
-                    @click="amount--"
+                    @click="decreaseAmount()"
                 >
                     <img src="images/icon-minus.svg" alt="Decrease" class="minus">
                 </button>
@@ -40,7 +40,7 @@
                 </p>
                 <button 
                     class="counter-button increase"
-                    @click="amount++"
+                    @click="increaseAmount()"
                 >
                     <img src="images/icon-plus.svg" alt="Increase" class="plus">
                 </button>
@@ -65,6 +65,16 @@
                 discount: 50,
                 amount: 1
             }
+        },
+        methods: {
+          decreaseAmount () {
+            if (this.amount > 0) {
+              this.amount--
+            }
+          },
+          increaseAmount () {
+            this.amount++
+          }
         }
     }
 </script>

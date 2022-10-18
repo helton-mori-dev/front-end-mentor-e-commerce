@@ -45,8 +45,8 @@
                         class="slider__close" 
                         height="30"
                     >  
-                    <img class="arrow__previous" src="images/icon-previous.svg" alt="" @click="incrementLightboxImages()">
-                    <img class="arrow__next" src="images/icon-next.svg" alt="" @click="decrementLightboxImages()">
+                    <img class="arrow__previous" src="images/icon-previous.svg" alt="" @click="decrementLightboxImages()">
+                    <img class="arrow__next" src="images/icon-next.svg" alt="" @click="incrementLightboxImages()">
                     <div 
                         class="slider__lightbox mx-auto"
                         v-for="slide in slides" 
@@ -174,6 +174,7 @@
                 }
                 images[this.currentLightboxImage].style.display = "block"
                 thumbs[this.currentLightboxImage].className += " active"
+                console.log(this.currentImage)
             }
 
         },
@@ -211,6 +212,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: flex-start;
       margin-top: 32px;
     }
 
@@ -248,7 +250,7 @@
         position: relative;
     }
 
-    .slider__lightbox:nth-of-type(2) .product__slider img {
+    .slider__lightbox:nth-of-type(1) .product__slider img {
         display: block;
     }
     
