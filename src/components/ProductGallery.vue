@@ -1,10 +1,13 @@
 <template>
     <div class="col-sm-12 col-md-6 gallery p-sm-0 p-md-5">
-        <div class="product__gallery"
-            v-for="slide in slides" 
-            :key="slide"
-        >
-            <div class="product__slider">
+        <div class="product__gallery">
+            <img class="arrow__previous" src="images/icon-previous.svg" alt="">
+            <img class="arrow__next" src="images/icon-next.svg" alt="">
+            <div 
+                class="product__slider"
+                v-for="slide in slides" 
+                :key="slide"
+            >
                 <img 
                     class="product__image img-fluid" 
                     :src="slide.src" 
@@ -14,7 +17,7 @@
             </div>
         </div>
         
-        <div class="thumbnails d-md-flex d-none">          
+        <div class="thumbnails d-sm-flex d-none">          
             <div 
                 class="thumb"
                 v-for="(thumb, index) in thumbs" :key="thumb"
@@ -42,6 +45,8 @@
                         class="slider__close" 
                         height="30"
                     >  
+                    <img class="arrow__previous" src="images/icon-previous.svg" alt="">
+                    <img class="arrow__next" src="images/icon-next.svg" alt="">
                     <div 
                         class="slider__lightbox mx-auto"
                         v-for="slide in slides" 
@@ -155,6 +160,7 @@
 
     .product__gallery {
         cursor: pointer;
+        position: relative;
     }
     
     .description {
@@ -204,7 +210,11 @@
         transition: .3s all ease;
     }
 
-    .slider__lightbox:nth-child(2) .product__slider img {
+    .product__slider {
+        position: relative;
+    }
+
+    .slider__lightbox:nth-of-type(2) .product__slider img {
         display: block;
     }
     
@@ -269,9 +279,44 @@
         opacity: 0;
     }
 
+    img[class*="arrow__"]{
+        display: none;
+    }
+
+    .slider__lightbox__container img[class*="arrow__"]{
+        display: block;
+    }
+
+    img[class*="arrow__"]{
+        position: absolute;
+        top: 50%;
+        translate: 0 -50%;
+        background-color: #fff;
+        padding: 8px 11px;
+        z-index: 5;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+
+    img[class*="arrow__"]:hover{
+        filter: invert(0.4) sepia(0.5) saturate(7.1) hue-rotate(360deg) brightness(1.2);
+    }
+    .arrow__previous {
+        left: 5%;
+    }
+    .arrow__next {
+        right: 5%;
+    }
+
     @media (max-width: 576px) {
+
+        img[class*="arrow__"]{
+            display: block;
+        }
         .product__image {
             border-radius: 0;
         }
+
+
     }
 </style>
