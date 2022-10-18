@@ -1,8 +1,8 @@
 <template>
     <div class="col-sm-12 col-md-6 gallery p-sm-0 p-md-5">
         <div class="product__gallery">
-            <img class="arrow__previous" src="images/icon-previous.svg" alt="">
-            <img class="arrow__next" src="images/icon-next.svg" alt="">
+            <img class="arrow__previous" @click="decrementImages()" src="images/icon-previous.svg" alt="">
+            <img class="arrow__next" @click="incrementImages()" src="images/icon-next.svg" alt="">
             <div 
                 class="product__slider"
                 v-for="slide in slides" 
@@ -45,8 +45,8 @@
                         class="slider__close" 
                         height="30"
                     >  
-                    <img class="arrow__previous" src="images/icon-previous.svg" alt="">
-                    <img class="arrow__next" src="images/icon-next.svg" alt="">
+                    <img class="arrow__previous" src="images/icon-previous.svg" alt="" @click="incrementLightboxImages()">
+                    <img class="arrow__next" src="images/icon-next.svg" alt="" @click="decrementLightboxImages()">
                     <div 
                         class="slider__lightbox mx-auto"
                         v-for="slide in slides" 
@@ -101,13 +101,15 @@
                     { src: 'images/image-product-2-thumbnail.jpg'},
                     { src: 'images/image-product-3-thumbnail.jpg'},
                     { src: 'images/image-product-4-thumbnail.jpg'}
-                ]
+                ],
+                currentImage: 0,
+                currentLightboxImage: 0,
             }
         },
         methods: {            
             showImages (n) {
             let i
-            let imageIndex = n
+            this.currentImage = n
             let images = document.querySelectorAll(".product__image")
             let thumbs = document.querySelectorAll(".img__thumb")
             
@@ -117,8 +119,8 @@
             for (i = 0; i < thumbs.length; i++) {
                 thumbs[i].className = thumbs[i].className.replace(" active", "")
             }
-            images[imageIndex].style.display = "block"
-            thumbs[imageIndex].className += " active"
+            images[this.currentImage].style.display = "block"
+            thumbs[this.currentImage].className += " active"
             },
             slideshow () {
                 this.showLightBox = true
@@ -126,9 +128,41 @@
             slideHide () {
                 this.showLightBox = false
             },
+            incrementImages () {
+                if(this.currentImage == 3) {
+                    this.currentImage = 0
+                } else {
+                    this.currentImage++
+                }
+                this.showImages(this.currentImage)
+            },
+            decrementImages () {
+                if(this.currentImage == 0) {
+                    this.currentImage = 3
+                } else {
+                    this.currentImage--
+                }
+                this.showImages(this.currentImage)
+            },
+            incrementLightboxImages () {
+                if(this.currentImage == 3) {
+                    this.currentImage = 0
+                } else {
+                    this.currentImage++
+                }
+                this.showImagesLightBox(this.currentImage)
+            },
+            decrementLightboxImages () {
+                if(this.currentImage == 0) {
+                    this.currentImage = 3
+                } else {
+                    this.currentImage--
+                }
+                this.showImagesLightBox(this.currentImage)
+            },
             showImagesLightBox (n) {
                 let i
-                let imageIndex = n
+                this.currentLightboxImage = n
                 let images = document.querySelectorAll(".product__image__lightbox")
                 let thumbs = document.querySelectorAll(".img__thumb__lightbox")
                 
@@ -138,8 +172,8 @@
                 for (i = 0; i < thumbs.length; i++) {
                     thumbs[i].className = thumbs[i].className.replace(" active", "")
                 }
-                images[imageIndex].style.display = "block"
-                thumbs[imageIndex].className += " active"
+                images[this.currentLightboxImage].style.display = "block"
+                thumbs[this.currentLightboxImage].className += " active"
             }
 
         },
