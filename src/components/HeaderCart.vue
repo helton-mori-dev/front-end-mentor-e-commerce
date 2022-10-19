@@ -1,7 +1,7 @@
 <template>    
     <div 
         href="#" 
-        class="header__cart"
+        class="header__cart mx-auto"
         @click.stop="openCart"
     >
         <img class="cart__img" src="images/icon-cart.svg" alt="">
@@ -20,8 +20,8 @@
                 <div class="product__wrap">
                     <img class="product__thumb" src="images/image-product-1-thumbnail.jpg" alt="">
                     <div class="product__info">                    
-                    <h2 class="product__name">Fall Limited Edition Sneakers</h2>
-                    <span class="single__price">$125.00 x 3 &nbsp;</span>             
+                    <h2 class="product__name">{{ productTitle }}</h2>
+                    <span class="single__price">${{ oldPrice*discount/100}} x {{ amount }} &nbsp;</span>             
                     <span class="total__price">$375.00</span>
                     </div>
                     <img class="icon__delete" src="images/icon-delete.svg">
@@ -51,8 +51,15 @@
     name: 'HeaderCart',
     data () {
       return {
-        items: 0,
-        cartOpen: false
+        items: 1,
+        cartOpen: false,
+        productName: 'Sneaker Company',
+        productTitle: 'Fall Limited Edition Sneakers',
+        productDescription: `These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
+they’ll withstand everything the weather can offer.`,
+        oldPrice: '250.00',
+        discount: 50,
+        amount: 3
       }
     },
     methods: {

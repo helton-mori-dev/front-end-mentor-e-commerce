@@ -138,8 +138,7 @@ export default {
   background-color: var(--orange);
 }
 
-.header__cart,
-.header__profile {
+.header__cart, .header__profile {
   display: flex;
   justify-content: center;
   align-items: start;
