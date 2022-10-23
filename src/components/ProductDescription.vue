@@ -15,7 +15,7 @@
         <div class="mobile-price-container">
           <div class="price-discount">
             <p class="main-price">
-              ${{ ((oldPrice*50)/100).toFixed(2) }}
+              ${{ newPrice }}
             </p>
             <p class="discount">
               {{ discount }}%
@@ -73,8 +73,15 @@
             }
           },
           increaseAmount () {
-            this.amount++
+            if (this.amount < 99) {
+              this.amount++
+            }
           }
+        },
+        computed: {
+          newPrice (){
+            return ((this.oldPrice*50)/100).toFixed(2)
+          } 
         }
     }
 </script>
