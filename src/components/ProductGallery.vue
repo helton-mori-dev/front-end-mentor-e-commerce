@@ -1,8 +1,8 @@
 <template>
     <div class="col-sm-12 col-md-6 gallery p-sm-0 p-md-5">
         <div class="product__gallery">
-            <img class="arrow__previous" @click="decrementImages()" src="images/icon-previous.svg" alt="">
-            <img class="arrow__next" @click="incrementImages()" src="images/icon-next.svg" alt="">
+            <span class="circle_arrow_previous"><img class="arrow__previous" @click="decrementImages()" src="images/icon-previous.svg" alt=""></span>
+            <span class="circle_arrow_next"><img class="arrow__next" @click="incrementImages()" src="images/icon-next.svg" alt=""></span>
             <div 
                 class="product__slider"
                 v-for="slide in slides" 
@@ -45,8 +45,8 @@
                         class="slider__close" 
                         height="30"
                     >  
-                    <img class="arrow__previous" src="images/icon-previous.svg" alt="" @click="decrementLightboxImages()">
-                    <img class="arrow__next" src="images/icon-next.svg" alt="" @click="incrementLightboxImages()">
+                    <span class="circle_arrow_previous"><img class="arrow__previous" src="images/icon-previous.svg" alt="" @click="decrementLightboxImages()"></span>
+                    <span class="circle_arrow_next"><img class="arrow__next" src="images/icon-next.svg" alt="" @click="incrementLightboxImages()"></span>
                     <div 
                         class="slider__lightbox mx-auto"
                         v-for="slide in slides" 
@@ -292,7 +292,7 @@
     }
     
     .slider__close:hover {
-        filter: brightness(200%);
+        filter: grayscale(100%) brightness(2);
     }
     .back-menu-layer {
         position: fixed;
@@ -321,38 +321,47 @@
 
     .slider__lightbox__container img[class*="arrow__"]{
         display: block;
+        padding: 18px 22px;
+        transition: .3s all ease;
     }
 
-    img[class*="arrow__"]{
+    span[class*="circle_arrow_"]{
         position: absolute;
         top: 50%;
         translate: 0 -50%;
         background-color: #fff;
-        padding: 8px 11px;
         z-index: 5;
         border-radius: 100%;
         cursor: pointer;
+        transition: .3s all ease;
     }
 
-    img[class*="arrow__"]:hover{
-        filter: invert(0.4) sepia(0.5) saturate(7.1) hue-rotate(360deg) brightness(1.2);
+    img[class*="arrow__"]:hover {
+        filter: brightness(0%);
     }
-    .arrow__previous {
-        left: 5%;
+    .circle_arrow_previous {
+        left: -5%;
     }
-    .arrow__next {
-        right: 5%;
+    .circle_arrow_next {
+        right: -5%;
     }
 
     @media (max-width: 576px) {
 
         img[class*="arrow__"]{
             display: block;
+            padding: 18px 22px;
+            transition: .3s all ease;
         }
         .product__image {
             border-radius: 0;
         }
-
+        .circle_arrow_previous {
+        left: 5%;
+        }
+        .circle_arrow_next {
+            right: 5%;
+        }
 
     }
 </style>
