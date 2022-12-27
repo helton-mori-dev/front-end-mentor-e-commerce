@@ -27,17 +27,15 @@
           </p>
         </div>
 
-        <div class="qty-wrapper row">
-            <div class="counter-wrapper col-sm-12">
+        <div class="qty-wrapper">
+            <div class="counter-wrapper">
                 <button 
                     class="counter-button decrease"
                     @click="decreaseAmount()"
                 >
                     <img src="images/icon-minus.svg" alt="Decrease" class="minus">
                 </button>
-                <p class="amount">
-                 {{ amount }}
-                </p>
+                <input class="amount" v-model="amount" />
                 <button 
                     class="counter-button increase"
                     @click="increaseAmount()"
@@ -45,7 +43,7 @@
                     <img src="images/icon-plus.svg" alt="Increase" class="plus">
                 </button>
             </div>
-            <button class="btn btn-dark add-to-cart col-sm-12">
+            <button class="btn add-to-cart">
                 <img src="images/icon-cart.svg" alt="Add to cart">
                 Add to cart
             </button>
@@ -144,9 +142,7 @@
     }
   
     .qty-wrapper {
-      display: grid;
-      grid-template-columns: 3fr 5fr;
-      gap: 20px;
+      display: flex;
     }
     
     .counter-wrapper {
@@ -154,22 +150,23 @@
       justify-content: space-around;
       border-radius: 12px;
       background-color: #f7f8fd;
+      width: 35%;
+      margin-right: 5%;
     }
-  
-    .counter-button {
-      border: none;
-      background-color: transparent;
-    }
-  
-    .counter-button:hover {
-      opacity: .6;
-    }
-    
+      
     .amount {
       font-size: 1.5rem;
       font-weight: 700;
       padding: 1rem 0;
       margin: 0;
+      max-width: 100px;
+      text-align: center;
+      background-color: transparent;
+      border: none;
+    }
+
+    .amount:focus{
+      outline: none;
     }
   
     .add-to-cart {
@@ -180,9 +177,26 @@
       border-radius: 12px;
       font-size: 1.3rem;
       letter-spacing: 2px;
+      width: 60%;
     }
 
-    @media (max-width: 769px) {
+    .qty-wrapper .add-to-cart:hover {
+      background-color: var(--orange);
+      opacity: .6;
+      color: #fff;
+    }
+   
+    .counter-button {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+    }
+  
+    .counter-button:hover {
+      opacity: .6;
+    }
+
+    @media (max-width: 992px) {
       .mobile-price-container {
         display: flex;
       }
@@ -190,16 +204,19 @@
       .qty-wrapper {
         display: flex;
         width: 100%;
-        margin: 0;
+        flex-direction: column;
       }
-
+      
       .counter-wrapper {
         justify-content: space-between;
+        margin-bottom: 1rem;
         padding: .5rem 2rem;
+        width: 100%;
       }
 
       .add-to-cart {
         padding: 1.8rem 0;
+        width: 100%;
       }
 
       .old-price {
