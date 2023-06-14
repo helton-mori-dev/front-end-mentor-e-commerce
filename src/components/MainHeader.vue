@@ -190,7 +190,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 7;
   }
 
   .header__logo {
@@ -234,7 +234,7 @@ export default {
     top: 0;
     left: 0;
     background-color: #fff;
-    z-index: 0;
+    z-index: 6;
   }
 
   .mobile-header__menu {
