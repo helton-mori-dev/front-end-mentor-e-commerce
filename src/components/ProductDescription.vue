@@ -15,7 +15,7 @@
         <div class="mobile-price-container">
           <div class="price-discount">
             <p class="main-price">
-              ${{ newPrice }}
+              {{ brPrice }}
             </p>
             <p class="discount">
               {{ discount }}%
@@ -23,7 +23,7 @@
           </div>
           
           <p class="old-price">
-            ${{ oldPrice }}
+            {{ oldBrPrice }}
           </p>
         </div>
 
@@ -59,10 +59,13 @@
                 productTitle: 'Fall Limited Edition Sneakers',
                 productDescription: `These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
         they’ll withstand everything the weather can offer.`,
-                oldPrice: '250.00',
+                oldPrice: '250',
                 discount: 50,
                 amount: 1
             }
+        },
+        filters: {
+
         },
         methods: {
           decreaseAmount () {
@@ -78,8 +81,14 @@
         },
         computed: {
           newPrice (){
-            return ((this.oldPrice*50)/100).toFixed(2)
-          } 
+            return ((this.oldPrice*50)/100)
+          },
+          brPrice(){
+            return `RS ${this.newPrice},00`
+          },
+          oldBrPrice(){
+            return `RS ${this.newPrice},00`
+          }
         }
     }
 </script>
