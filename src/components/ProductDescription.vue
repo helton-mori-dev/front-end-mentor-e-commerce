@@ -48,22 +48,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
+
 export default {
   data() {
-    return { oldPrice: 250, amount: 1 };
+    return { oldPrice: 250 };
   },
   methods: {
-    decreaseAmount() {
-      if (this.amount > 0) {
-        this.amount--;
-      }
-    },
-    increaseAmount() {
-      if (this.amount < 99) {
-        this.amount++;
-      }
-    },
+    ...mapMutations({
+      decreaseAmount: "setDecrement",
+      increaseAmount: "setIncrement",
+    }),
   },
   computed: {
     ...mapState([
@@ -71,6 +66,7 @@ export default {
       "productTitle",
       "productDescription",
       "discount",
+      "amount",
     ]),
     newPrice() {
       return ((this.oldPrice * 50) / 100).toLocaleString("pt-br", {

@@ -1,76 +1,68 @@
-<template>    
-    <div 
-        href="#" 
-        class="header__cart mx-auto"
-        @click.stop="openCart"
-    >
-        <img class="cart__img" src="images/icon-cart.svg" alt="">
-        
-        <transition name="cart">
-          <div 
-            class="cart__content"
-            v-if="cartOpen"
-          >
-            <h2 class="cart__title">Cart</h2>
-            <div class="cart__summary">
-              <div 
-                v-if="items > 0"
-                class="cart__items"
-              >
-                <div class="product__wrap">
-                    <img class="product__thumb" src="images/image-product-1-thumbnail.jpg" alt="">
-                    <div class="product__info">                    
-                    <h2 class="product__name">{{ productTitle }}</h2>
-                    <span class="single__price">${{ oldPrice*discount/100}} x {{ amount }} &nbsp;</span>             
-                    <span class="total__price">$375.00</span>
-                    </div>
-                    <img class="icon__delete" src="images/icon-delete.svg">
-                </div>
-                <button class="btn btn-primary button__checkout">Checkout</button>
-                </div>
-                <h3
-                v-else
-                class="cart__message"
+<template>
+  <div href="#" class="header__cart mx-auto" @click.stop="openCart">
+    <img class="cart__img" src="images/icon-cart.svg" alt="" />
+
+    <transition name="cart">
+      <div class="cart__content" v-if="cartOpen">
+        <h2 class="cart__title">Cart</h2>
+        <div class="cart__summary">
+          <div v-if="items > 0" class="cart__items">
+            <div class="product__wrap">
+              <img
+                class="product__thumb"
+                src="images/image-product-1-thumbnail.jpg"
+                alt=""
+              />
+              <div class="product__info">
+                <h2 class="product__name">{{ productTitle }}</h2>
+                <span class="single__price"
+                  >${{ (oldPrice * discount) / 100 }} x
+                  {{ amount }} &nbsp;</span
                 >
-                Your cart is empty.
-                </h3>
-            </div>          
+                <span class="total__price">$375.00</span>
+              </div>
+              <img class="icon__delete" src="images/icon-delete.svg" />
             </div>
-        </transition>
-    </div>
-    <div 
-      class="back-cart-layer"
-      v-if="cartOpen"  
-      @click="closeCart"
-    >
-    </div>
+            <button class="btn btn-primary button__checkout">Checkout</button>
+          </div>
+          <h3 v-else class="cart__message">Your cart is empty.</h3>
+        </div>
+      </div>
+    </transition>
+  </div>
+  <div class="back-cart-layer" v-if="cartOpen" @click="closeCart"></div>
 </template>
 
 <script>
-    export default {
-    name: 'HeaderCart',
-    data () {
-      return {
-        items: 1,
-        cartOpen: false,
-        productName: 'Sneaker Company',
-        productTitle: 'Fall Limited Edition Sneakers',
-        productDescription: `These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
-they’ll withstand everything the weather can offer.`,
-        oldPrice: '250.00',
-        discount: 50,
-        amount: 3
-      }
+import { mapState } from "vuex";
+
+export default {
+  name: "HeaderCart",
+  data() {
+    return {
+      items: 1,
+      cartOpen: false,
+      oldPrice: "250.00",
+    };
+  },
+  computed: {
+    ...mapState([
+      "productName",
+      "productTitle",
+      "productDescription",
+      "discount",
+      "amount",
+    ]),
+  },
+  methods: {
+    openCart() {
+      this.cartOpen = true;
     },
-    methods: {
-      openCart () {
-        this.cartOpen = true
-      },
-      closeCart () {
-        this.cartOpen = false
-      }
-    }
-}
+    closeCart() {
+      this.cartOpen = false;
+    },
+  },
+};
 </script>
 
 <style>
@@ -151,7 +143,7 @@ they’ll withstand everything the weather can offer.`,
 }
 
 .header__cart .cart__img {
-  opacity: .6;
+  opacity: 0.6;
   cursor: pointer;
 }
 
@@ -160,16 +152,18 @@ they’ll withstand everything the weather can offer.`,
 }
 
 .back-cart-layer {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-  }
-
-.cart-enter-active, .cart-leave-active {
-  transition: .3s all ease;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
 }
 
-.cart-enter-from, .cart-leave-to {
+.cart-enter-active,
+.cart-leave-active {
+  transition: 0.3s all ease;
+}
+
+.cart-enter-from,
+.cart-leave-to {
   opacity: 0;
 }
 
@@ -181,6 +175,5 @@ they’ll withstand everything the weather can offer.`,
     translate: -50%;
     width: 90%;
   }
-
 }
 </style>

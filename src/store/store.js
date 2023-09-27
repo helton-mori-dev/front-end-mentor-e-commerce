@@ -10,6 +10,19 @@ export const store = createStore({
             productDescription: `These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
         they’ll withstand everything the weather can offer.`,
             discount: 50,
+            amount: 1
+        }
+    },
+    mutations: {
+        setIncrement(state) {
+            if (state.amount < 99) {
+                state.amount++
+            }
+        },
+        setDecrement(state) {
+            if (state.amount > 0) {
+                state.amount--
+            }
         }
     }
 })
