@@ -48,19 +48,11 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
-    return {
-      productName: "Sneaker Company",
-      productTitle: "Fall Limited Edition Sneakers",
-      productDescription: `These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
-        they’ll withstand everything the weather can offer.`,
-      oldPrice: 250,
-      discount: 50,
-      amount: 1,
-    };
+    return { oldPrice: 250, amount: 1 };
   },
-  filters: {},
   methods: {
     decreaseAmount() {
       if (this.amount > 0) {
@@ -74,6 +66,12 @@ export default {
     },
   },
   computed: {
+    ...mapState([
+      "productName",
+      "productTitle",
+      "productDescription",
+      "discount",
+    ]),
     newPrice() {
       return ((this.oldPrice * 50) / 100).toLocaleString("pt-br", {
         style: "currency",
