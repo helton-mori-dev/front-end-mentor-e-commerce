@@ -6,20 +6,32 @@
       <div class="cart__content" v-if="cartOpen">
         <h2 class="cart__title">Cart</h2>
         <div class="cart__summary">
-          <div v-if="items > 0" class="cart__items">
-            <div class="product__wrap">
-              <img
-                class="product__thumb"
-                src="images/image-product-1-thumbnail.jpg"
-                alt=""
-              />
+          <div v-if="items.length > 0" class="cart__items">
+            <div
+              class="product__wrap"
+              v-for="(item, index) in items"
+              :key="index"
+            >
+              <img class="product__thumb" :src="src" alt="" />
               <div class="product__info">
-                <h2 class="product__name">{{ productTitle }}</h2>
+                <h2 class="product__name">{{ item.productTitle }}</h2>
                 <span class="single__price"
-                  >${{ (oldPrice * discount) / 100 }} x
-                  {{ amount }} &nbsp;</span
+                  >{{
+                    items[index].newPrice.toLocaleString("pt-br", {
+                      style: "currency",
+                      currency: "BRL",
+                    })
+                  }}
+                  x {{ items[index].amount }}</span
                 >
-                <span class="total__price">$375.00</span>
+                <span class="total__price">
+                  &nbsp;{{
+                    items[index].total.toLocaleString("pt-br", {
+                      style: "currency",
+                      currency: "BRL",
+                    })
+                  }}</span
+                >
               </div>
               <img class="icon__delete" src="images/icon-delete.svg" />
             </div>
@@ -40,13 +52,13 @@ export default {
   name: "HeaderCart",
   data() {
     return {
-      items: 1,
       cartOpen: false,
-      oldPrice: "250.00",
     };
   },
   computed: {
     ...mapState([
+      "src",
+      "items",
       "productName",
       "productTitle",
       "productDescription",

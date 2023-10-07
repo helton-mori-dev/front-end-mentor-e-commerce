@@ -5,6 +5,8 @@ import {
 export const store = createStore({
     state() {
         return {
+            items: [],
+            src: "images/image-product-1-thumbnail.jpg",
             productName: "Sneaker Company",
             productTitle: "Fall Limited Edition Sneakers",
             productDescription: `These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,

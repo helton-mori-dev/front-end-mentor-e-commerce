@@ -14,7 +14,12 @@
     <div class="mobile-price-container">
       <div class="price-discount">
         <p class="main-price">
-          {{ newPrice }}
+          {{
+            newPrice.toLocaleString("pt-br", {
+              style: "currency",
+              currency: "BRL",
+            })
+          }}
         </p>
         <p class="discount">{{ discount }}%</p>
       </div>
@@ -39,7 +44,7 @@
           <img src="images/icon-plus.svg" alt="Increase" class="plus" />
         </button>
       </div>
-      <button class="btn add-to-cart">
+      <button class="btn add-to-cart" @click="addTocart">
         <img src="images/icon-cart.svg" alt="Add to cart" />
         Add to cart
       </button>
@@ -59,9 +64,20 @@ export default {
       decreaseAmount: "setDecrement",
       increaseAmount: "setIncrement",
     }),
+    addTocart() {
+      const item = {
+        productTitle: this.productTitle,
+        newPrice: this.newPrice,
+        amount: this.amount,
+        total: this.newPrice * this.amount,
+      };
+      this.items.push(item);
+      console.log(this.items);
+    },
   },
   computed: {
     ...mapState([
+      "items",
       "productName",
       "productTitle",
       "productDescription",
@@ -69,10 +85,7 @@ export default {
       "amount",
     ]),
     newPrice() {
-      return ((this.oldPrice * 50) / 100).toLocaleString("pt-br", {
-        style: "currency",
-        currency: "BRL",
-      });
+      return (this.oldPrice * this.discount) / 100;
     },
   },
 };
