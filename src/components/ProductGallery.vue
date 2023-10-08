@@ -174,7 +174,6 @@
                 }
                 images[this.currentLightboxImage].style.display = "block"
                 thumbs[this.currentLightboxImage].className += " active"
-                console.log(this.currentImage)
             }
 
         },

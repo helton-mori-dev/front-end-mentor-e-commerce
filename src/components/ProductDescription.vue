@@ -15,9 +15,9 @@
       <div class="price-discount">
         <p class="main-price">
           {{
-            newPrice.toLocaleString("pt-br", {
+            newPrice.toLocaleString("en-US", {
               style: "currency",
-              currency: "BRL",
+              currency: "USD",
             })
           }}
         </p>
@@ -26,9 +26,9 @@
 
       <p class="old-price">
         {{
-          oldPrice.toLocaleString("pt-br", {
+          oldPrice.toLocaleString("en-US", {
             style: "currency",
-            currency: "BRL",
+            currency: "USD",
           })
         }}
       </p>
@@ -72,7 +72,6 @@ export default {
         total: this.newPrice * this.amount,
       };
       this.items.push(item);
-      console.log(this.items);
     },
   },
   computed: {

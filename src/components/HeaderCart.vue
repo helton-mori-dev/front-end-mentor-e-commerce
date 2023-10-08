@@ -17,18 +17,18 @@
                 <h2 class="product__name">{{ item.productTitle }}</h2>
                 <span class="single__price"
                   >{{
-                    items[index].newPrice.toLocaleString("pt-br", {
+                    items[index].newPrice.toLocaleString("en-US", {
                       style: "currency",
-                      currency: "BRL",
+                      currency: "USD",
                     })
                   }}
                   x {{ items[index].amount }}</span
                 >
                 <span class="total__price">
                   &nbsp;{{
-                    items[index].total.toLocaleString("pt-br", {
+                    items[index].total.toLocaleString("en-US", {
                       style: "currency",
-                      currency: "BRL",
+                      currency: "USD",
                     })
                   }}</span
                 >
