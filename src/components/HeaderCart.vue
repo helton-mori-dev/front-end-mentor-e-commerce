@@ -15,15 +15,15 @@
               <img class="product__thumb" :src="src" alt="" />
               <div class="product__info">
                 <h2 class="product__name">{{ item.productTitle }}</h2>
-                <span class="single__price"
-                  >{{
+                <span class="single__price">
+                  {{
                     items[index].newPrice.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                     })
                   }}
-                  x {{ items[index].amount }}</span
-                >
+                  x {{ items[index].amount }}
+                </span>
                 <span class="total__price">
                   &nbsp;{{
                     items[index].total.toLocaleString("en-US", {
@@ -33,7 +33,11 @@
                   }}
                 </span>
               </div>
-              <img class="icon__delete" src="images/icon-delete.svg" />
+              <img 
+                class="icon__delete" 
+                src="images/icon-delete.svg" 
+                @click="deleteItem(index)"
+              />
             </div>
             <button class="btn btn-primary button__checkout">Checkout</button>
           </div>
@@ -73,6 +77,9 @@ export default {
     closeCart() {
       this.cartOpen = false;
     },
+    deleteItem(index){
+      this.items.splice(index,1)
+    }
   },
 };
 </script>
@@ -86,7 +93,7 @@ export default {
   position: absolute;
   top: 50%;
   right: 0;
-  width: 420px;
+  width: 430px;
   border-radius: 8px;
   box-shadow: 0 1px 10px rgb(0 0 0 / 40%);
   opacity: 1;
@@ -156,6 +163,12 @@ export default {
 .icon__delete {
   display: table;
   margin: auto;
+  cursor: pointer;
+  transition: .3s all ease;
+}
+
+.icon__delete:hover {
+  opacity: .5;
 }
 
 .button__checkout {

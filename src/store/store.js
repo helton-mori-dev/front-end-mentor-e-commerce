@@ -16,12 +16,12 @@ export const store = createStore({
         }
     },
     mutations: {
-        setIncrement(state) {
+        incrementAmount(state) {
             if (state.amount < 99) {
                 state.amount++
             }
         },
-        setDecrement(state) {
+        decrementAmount(state) {
             if (state.amount > 0) {
                 state.amount--
             }

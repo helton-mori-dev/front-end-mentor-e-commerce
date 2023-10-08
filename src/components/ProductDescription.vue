@@ -61,8 +61,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      decreaseAmount: "setDecrement",
-      increaseAmount: "setIncrement",
+      decreaseAmount: "decrementAmount",
+      increaseAmount: "incrementAmount",
     }),
     addTocart() {
       const item = {
