@@ -1,7 +1,7 @@
 <template>
   <div href="#" class="header__cart mx-auto" @click.stop="openCart">
     <img class="cart__img" src="images/icon-cart.svg" alt="" />
-
+    <span class="cart__total">{{ items.length }}</span>
     <transition name="cart">
       <div class="cart__content" v-if="cartOpen">
         <h2 class="cart__title">Cart</h2>
@@ -30,8 +30,8 @@
                       style: "currency",
                       currency: "USD",
                     })
-                  }}</span
-                >
+                  }}
+                </span>
               </div>
               <img class="icon__delete" src="images/icon-delete.svg" />
             </div>
@@ -103,6 +103,20 @@ export default {
   padding: 32px 24px;
 }
 
+.cart__total {
+  background-color: var(--orange);
+  color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: -6px;
+  right: -15px;
+  left: auto;
+  font-weight: 600;
+  font-size: .75rem;
+  min-width: 26px;
+  text-align: center;
+}
+
 .cart__summary {
   padding: 24px;
   min-height: 200px;
@@ -152,6 +166,10 @@ export default {
   font-size: 18px;
   padding: 16px 0;
   border: none;
+}
+
+.header__cart {
+  position: relative;
 }
 
 .header__cart .cart__img {
