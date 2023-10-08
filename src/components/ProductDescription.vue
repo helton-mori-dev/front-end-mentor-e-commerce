@@ -184,6 +184,7 @@ export default {
   font-size: 1.3rem;
   letter-spacing: 2px;
   width: 60%;
+  transition: .3s all ease;
 }
 
 .qty-wrapper .add-to-cart:hover {
@@ -202,6 +203,14 @@ export default {
   opacity: 0.6;
 }
 
+.increase {
+  padding: 0 16px 0 0;
+}
+
+.decrease {
+  padding: 0 0 0 16px;
+}
+
 @media (max-width: 992px) {
   .mobile-price-container {
     display: flex;
@@ -215,7 +224,8 @@ export default {
 
   .counter-wrapper {
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
     padding: 0.5rem 2rem;
     width: 100%;
   }
@@ -227,6 +237,7 @@ export default {
 
   .old-price {
     text-align: right;
+    margin-bottom: auto;
   }
 }
 </style>

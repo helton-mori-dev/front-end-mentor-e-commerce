@@ -12,7 +12,7 @@
               v-for="(item, index) in items"
               :key="index"
             >
-              <img class="product__thumb" :src="src" alt="" />
+              <img class="product__thumb" :src="src" :alt="productTitle" />
               <div class="product__info">
                 <h2 class="product__name">{{ item.productTitle }}</h2>
                 <span class="single__price">
@@ -39,7 +39,7 @@
                 @click="deleteItem(index)"
               />
             </div>
-            <button class="btn btn-primary button__checkout">Checkout</button>
+            <button class="btn button__checkout">Checkout</button>
           </div>
           <h3 v-else class="cart__message">Your cart is empty.</h3>
         </div>
@@ -171,7 +171,7 @@ export default {
   opacity: .5;
 }
 
-.button__checkout {
+button.button__checkout {
   background-color: var(--orange);
   width: 100%;
   color: #fff;
@@ -179,6 +179,13 @@ export default {
   font-size: 18px;
   padding: 16px 0;
   border: none;
+  transition: .3s all ease;
+}
+
+.cart__summary button.button__checkout:hover {
+  background-color: var(--orange);
+  opacity: .6;
+  color: #fff;
 }
 
 .header__cart {

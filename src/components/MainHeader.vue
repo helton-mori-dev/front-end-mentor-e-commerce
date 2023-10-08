@@ -125,13 +125,13 @@ export default {
 
 .menu__link:after {
   content: '';
-  transition: 0.5s all ease;
+  transition: 0.3s all ease;
   height: 0;
 }
 
 .menu__link:hover:after {
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   left: 0;
   height: 4px;
   width: 100%;
