@@ -39,13 +39,14 @@
         <button class="counter-button decrease" @click="decreaseAmount()">
           <img src="images/icon-minus.svg" alt="Decrease" class="minus" />
         </button>
-        <input class="amount" v-model="amount" />
+        <label for="amount"></label>
+        <input class="amount" v-model="amount" type="text"/>
         <button class="counter-button increase" @click="increaseAmount()">
           <img src="images/icon-plus.svg" alt="Increase" class="plus" />
         </button>
       </div>
       <button class="btn add-to-cart" @click="addTocart">
-        <img src="images/icon-cart.svg" alt="Add to cart" />
+        <img src="images/icon-cart.svg" alt="Shopping cart icon" />
         Add to cart
       </button>
     </div>
